@@ -1,0 +1,17 @@
+Exemplos:
+
+https://github.com/danielTeniente/FlaskVideo
+
+https://github.com/codeshow/003-arquitetura-flask
+
+https://github.com/MagnoBelloni/ruanzin-lanches 
+-----------------------------------------------------------------------
+
+Nova funcionalidade --- CRUD medicamentos + data de vencimento, quantidade de medicamentos disponíveis 
+
+-----------------------------------------------------------------------
+
+Definir banco:
+definido SQLite 
+
+Fazer com SQLAlchemy

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Medicamentos</h1>
+{% for medicamento in medicamentos %}
+<p>{{medicamento.nome}}</p>
+{% endfor %}
+{% endblock %}
