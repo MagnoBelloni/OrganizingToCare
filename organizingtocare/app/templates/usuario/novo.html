@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Novo Usuário</h1>
+<hr>
+<form action="/usuario/novo" method="post">
+    <div class="form-row">
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo">
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <input type="text" class="form-control" name="login" id="login" placeholder="Login">
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Tipo de Usuário</label>
+            <select id="inputState" class="form-control" name="tipo">
+                <option value="comum" selected>Comum</option>
+                <option value="administrador">Administrador</option>
+            </select>
+        </div>
+
+    </div>
+    <button class="btn btn-success mt-4" type="submit">Salvar</button>
+</form>
+
+
+
+{% endblock %}

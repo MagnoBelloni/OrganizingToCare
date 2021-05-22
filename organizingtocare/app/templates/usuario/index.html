@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Usuários</h1>
+<a class="btn btn-success text-white mt-2" href="/usuario/novo">Novo</a>
+
+<div class="table-responsive mt-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Login</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{usuario.nomeCompleto}}</td>
+                <td>{{usuario.tipo}}</td>
+                <td>{{usuario.login}}</td>
+                <td><a href="/usuario/editar/{{usuario.id}}" class="btn btn-success">Editar</a></td>
+                <td><a href="/usuario/excluir/{{usuario.id}}" class="btn btn-danger">Excluir</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

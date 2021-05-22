@@ -1,4 +1,41 @@
-{% extends "base.html" %}
-{% block content %}
-<h1>Login</h1>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizing To Care</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg text-center navbar-light bg-dark">
+        <a class="navbar-brand text-white " href="#">Organizing to Care</a>
+    </nav>
+    <div class="container">
+        <div class="card text-center mt-5">
+            <div class="card-body">
+                <h1 class="card-title">Login</h1>
+                <form action="/" method="post">
+                    <div class="input-group col-sm-12 col-lg-10 mt-2">
+                        <input type="text" class="form-control" name="login" id="login" placeholder="Login">
+                    </div>
+                    <div class="input-group col-sm-12 col-lg-10 mt-2">
+                        <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha">
+                    </div>
+                    <button class="btn btn-primary mt-4" type="submit">Entrar</button>
+                </form>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li class="text-danger">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Bem vindo</h1>
+<div class="table-responsive mt-5">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Data Vencimento</th>
+                <th>Visualizar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dipirona</td>
+                <td>18/08/2021</td>
+                <td><a href="/medicamento/editar/" class="btn btn-success">Visualizar</a></td>
+            </tr>
+            <tr>
+                <td>Dipirona</td>
+                <td>18/08/2021</td>
+                <td><a href="/medicamento/editar/" class="btn btn-success">Visualizar</a></td>
+            </tr>
+            <tr>
+                <td>Dipirona</td>
+                <td>18/08/2021</td>
+                <td><a href="/medicamento/editar/" class="btn btn-success">Visualizar</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

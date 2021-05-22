@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{mensagem}}</h1>
+
+<div class="jumbotron bg-jumbotron">
+    <h1 class="display-4">Pronto</h1>
+    <p class="lead">Por favor informe a seguinte senha para o usuário: <b>{{senha}}</b></p>
+    <hr class="my-4">
+    <p>No próximo login, a senha do usuário deverá ser alterada.</p>
+</div>
+
+<a class="btn btn-success text-white mt-2" href="/usuario">Voltar</a>
+
+
+{% endblock %}
