@@ -10,24 +10,24 @@ def index_medicamentos():
     return render_template("medicamento/index.html", medicamentos=medicamentos)
 
 
-@app.route("/medicamento/novo")
+@app.route("/medicamento/novo", methods=['POST', 'GET'])
 def novo_medicamento():
     if request.method =='POST':
         # crio um objeto cliente com os dados do formulário 
         medicamento = Medicamento(
-        request.form['nome_medicamento'],
-        request.form['data_validade'],
+        request.form['nome'],
+        request.form['dataVencimento'],
         request.form['quantidade'],
         request.form['peso'])
         db.session.add(medicamento)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('index_medicamentos'))
     return render_template("medicamento/novo.html")
 
-    if request.form['nome_medicamento'] == '':
+    if request.form['nome'] == '':
         flash('Nome do medicamento é obrigatório!')
 
-    if request.form['data_validade'] == '':
+    if request.form['dataVencimento'] == '':
         flash('A data de validade é obrigatória!')
 
     if request.form['quantidade'] == '':
@@ -38,17 +38,17 @@ def novo_medicamento():
 
 
 
-@app.route("/medicamento/editar/<int:id>")
-def editar_medicamento():
+@app.route("/medicamento/editar/<int:id>", methods=['GET','POST'])
+def editar_medicamento(id):
     # select from 
     medicamento = Medicamento.query.get(id)
     if request.method == 'POST':
-        medicamento.nome_medicamento = request.form['nome_medicamento']
-        medicamento.data_validade = request.form['data_validade']
+        medicamento.nome = request.form['nome']
+        medicamento.dataVencimento = request.form['dataVencimento']
         medicamento.quantidade = request.form['quantidade']
         medicamento.peso = request.form['peso']
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('index_medicamentos'))
     return render_template("medicamento/editar.html", medicamento = medicamento)     
 
 
@@ -57,4 +57,4 @@ def excluir_medicamento(id):
     medicamento = Medicamento.query.get(id)
     db.session.delete(medicamento)
     db.session.commit()
-    return redirect(url_for("index"))
+    return redirect(url_for("index_medicamentos"))

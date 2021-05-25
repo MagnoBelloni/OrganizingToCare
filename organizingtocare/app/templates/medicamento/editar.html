@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Editar Medicamento</h1>
+<hr>
+<form action="/medicamento/editar/{{medicamento.id}}" method="post">
+    <div class="form-row">
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Nome do Medicamento</label>
+            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo"
+                value="{{medicamento.nome}}">
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Data Vencimento</label>
+            <input type="date" class="form-control" name="dataVencimento" id="dataVencimento" placeholder="dataVencimento"
+                value="{{medicamento.dataVencimento}}">
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Quantidade</label>
+            <input type="text" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade"
+                value="{{medicamento.quantidade}}">
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Peso</label>
+            <input type="text" class="form-control" name="peso" id="peso" placeholder="Peso"
+                value="{{medicamento.peso}}">
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Data de Criação</label>
+            <input type="text" disabled class="form-control" name="dataCriacao" id="dataCriacao"
+                value="{{medicamento.dataCriacao}}">
+        </div>
+    <button class="btn btn-success mt-4" type="submit">Salvar</button>
+</form>
+{% endblock %}

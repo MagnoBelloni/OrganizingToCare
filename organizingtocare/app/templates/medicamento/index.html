@@ -1,7 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Medicamentos</h1>
-{% for medicamento in medicamentos %}
-<p>{{medicamento.nome}}</p>
-{% endfor %}
+<a class="btn btn-success text-white mt-2" href="/medicamento/novo">Novo</a>
+
+<div class="table-responsive mt-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome do Medicamento</th>
+                <th>Data de Vencimento</th>
+                <th>Quantidade</th>
+                <th>Peso</th>
+                <th>Data de criação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medicamento in medicamentos %}
+            <tr>
+                <td>{{medicamento.nome}}</td>
+                <td>{{medicamento.dataVencimento}}</td>
+                <td>{{medicamento.quantidade}}</td>
+                <td>{{medicamento.peso}}</td>
+                <td>{{medicamento.dataCriacao}}</td>
+                <td><a href="/medicamento/editar/{{medicamento.id}}" class="btn btn-success">Editar</a></td>
+                <td><a href="/medicamento/excluir/{{medicamento.id}}" class="btn btn-danger">Excluir</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
 {% endblock %}
