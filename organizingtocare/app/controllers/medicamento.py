@@ -58,3 +58,5 @@ def excluir_medicamento(id):
     db.session.delete(medicamento)
     db.session.commit()
     return redirect(url_for("index_medicamentos"))
+
+#.
