@@ -59,4 +59,3 @@ def excluir_medicamento(id):
     db.session.commit()
     return redirect(url_for("index_medicamentos"))
 
-#.
