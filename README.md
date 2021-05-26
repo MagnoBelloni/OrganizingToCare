@@ -23,6 +23,7 @@ Uma aplicação para gerenciar medicamentos.
 - O usuário deverá realizar o login para utilizar a aplicação;
 - O usuário deverá realizar a troca de senha no primeiro Login;
 - A aplicação deverá listar os medicamentos com vencimento de no minímo 15 dias na página "Home";
+- A aplicação deverá mostrar em vermelho os medicamentos vencidos na página "Home";
 - A aplicação deverá listar todos os medicamentos na página "Medicamentos";
 - A aplicação deverá permitir que todos os usuário criem/editem medicamentos;
 - A aplicação deverá listar todos os usuários apenas a usuários com perfil "admnistrador" na página "Usuários";

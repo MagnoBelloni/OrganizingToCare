@@ -11,21 +11,19 @@
             </tr>
         </thead>
         <tbody>
+            {% for medicamento in medicamentos %}
             <tr>
-                <td>Dipirona</td>
-                <td>18/08/2021</td>
-                <td><a href="/medicamento/editar/" class="btn btn-success">Visualizar</a></td>
+                <td>{{medicamento.nome}}</td>
+                {% if medicamento.vencido %}
+                <td style="color: red;">{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
+                <td><a href="/medicamento/editar/{{medicamento.id}}" class="btn btn-warning">Visualizar</a></td>
+                {% endif %}
+                {% if not medicamento.vencido %}
+                <td>{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
+                <td><a href="/medicamento/editar/{{medicamento.id}}" class="btn btn-success">Visualizar</a></td>
+                {% endif %}
             </tr>
-            <tr>
-                <td>Dipirona</td>
-                <td>18/08/2021</td>
-                <td><a href="/medicamento/editar/" class="btn btn-success">Visualizar</a></td>
-            </tr>
-            <tr>
-                <td>Dipirona</td>
-                <td>18/08/2021</td>
-                <td><a href="/medicamento/editar/" class="btn btn-success">Visualizar</a></td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>

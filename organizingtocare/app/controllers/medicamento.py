@@ -1,7 +1,8 @@
 from app import app, db
 from app.models.medicamento import Medicamento
 from flask import Flask, render_template, request, redirect, url_for
-from flask import  flash, get_flashed_messages, json, jsonify
+from flask import flash, get_flashed_messages, json, jsonify
+from datetime import datetime
 
 
 @app.route("/medicamento")
@@ -12,13 +13,16 @@ def index_medicamentos():
 
 @app.route("/medicamento/novo", methods=['POST', 'GET'])
 def novo_medicamento():
-    if request.method =='POST':
-        # crio um objeto cliente com os dados do formulário 
+    if request.method == 'POST':
+        # crio um objeto cliente com os dados do formulário
+        dataVencimentoFormatada = datetime.strptime(
+            request.form['dataVencimento'], '%Y-%m-%d')
+
         medicamento = Medicamento(
-        request.form['nome'],
-        request.form['dataVencimento'],
-        request.form['quantidade'],
-        request.form['peso'])
+            request.form['nome'],
+            dataVencimentoFormatada,
+            request.form['quantidade'],
+            request.form['peso'])
         db.session.add(medicamento)
         db.session.commit()
         return redirect(url_for('index_medicamentos'))
@@ -37,10 +41,9 @@ def novo_medicamento():
         return render_template("medicamento/novo.html")
 
 
-
-@app.route("/medicamento/editar/<int:id>", methods=['GET','POST'])
+@app.route("/medicamento/editar/<int:id>", methods=['GET', 'POST'])
 def editar_medicamento(id):
-    # select from 
+    # select from
     medicamento = Medicamento.query.get(id)
     if request.method == 'POST':
         medicamento.nome = request.form['nome']
@@ -49,7 +52,7 @@ def editar_medicamento(id):
         medicamento.peso = request.form['peso']
         db.session.commit()
         return redirect(url_for('index_medicamentos'))
-    return render_template("medicamento/editar.html", medicamento = medicamento)     
+    return render_template("medicamento/editar.html", medicamento=medicamento)
 
 
 @app.route("/medicamento/excluir/<int:id>")
@@ -58,4 +61,3 @@ def excluir_medicamento(id):
     db.session.delete(medicamento)
     db.session.commit()
     return redirect(url_for("index_medicamentos"))
-
