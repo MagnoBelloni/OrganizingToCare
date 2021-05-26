@@ -85,6 +85,7 @@ Criamos o layout utilizando o Figma. Você pode encontrar o arquivo [aqui](https
   and integrate systems more effectively.
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/) - Web development one drop at a time.
 - [SqlAlchemy](https://www.sqlalchemy.org/) - SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.
+- [SQLite](https://www.sqlite.org/) - SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
 - [Figma](https://figma.com/) - Online prototyping tool.
 - [ViaCEP](https://viacep.com.br/) - Consulte CEPs de todo o Brasil
 
