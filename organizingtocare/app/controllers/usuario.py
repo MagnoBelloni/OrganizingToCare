@@ -2,6 +2,7 @@ from app import app, db
 from flask import render_template, request, redirect, url_for, flash, session
 from app.models.usuario import Usuario
 from app.helpers.gera_senha import gerar_senha_aleatoria
+from app.apis.via_cep import busca_cep
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -46,8 +47,10 @@ def index_usuario():
 def novo_usuario():
     if request.method == 'POST':
         senha = gerar_senha_aleatoria()
+        cep = request.form['cep']
+        logradouro = busca_cep(cep)
         usuario = Usuario(
-            request.form['nome'], request.form['login'], request.form['tipo'], senha)
+            request.form['nome'], request.form['login'], request.form['tipo'], senha, cep, logradouro)
 
         db.session.add(usuario)
         db.session.commit()
@@ -64,6 +67,8 @@ def editar_usuario(id):
         usuario.login = request.form['login']
         usuario.tipo = request.form['tipo']
         ativo = bool(request.form.get('ativo'))
+        usuario.cep = request.form['cep']
+        usuario.logradouro = busca_cep(usuario.cep)
         usuario.ativo = ativo
 
         db.session.commit()

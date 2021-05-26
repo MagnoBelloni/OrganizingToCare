@@ -26,8 +26,9 @@ Uma aplicação para gerenciar medicamentos.
 - A aplicação deverá listar todos os medicamentos na página "Medicamentos";
 - A aplicação deverá permitir que todos os usuário criem/editem medicamentos;
 - A aplicação deverá listar todos os usuários apenas a usuários com perfil "admnistrador" na página "Usuários";
-- A aplicação deverá permitir apenas a usuários com perfil "admnistrador" crie/edite novos usuários.
-- A aplicação deverá permitir apenas a usuários com perfil "admnistrador" resete a senha dos usuários.
+- A aplicação deverá permitir apenas a usuários com perfil "admnistrador" crie/edite novos usuários;
+- A aplicação deverá permitir apenas a usuários com perfil "admnistrador" resete a senha dos usuários;
+- A aplicação deverá consultar a API ViaCEP, para realizar uma consulta do logradouro pelo CEP do usuário;
 
 ### Banco de dados:
 
@@ -40,11 +41,11 @@ Criamos o layout utilizando o Figma. Você pode encontrar o arquivo [aqui](https
 ### Camadas:
 
 - controllers, aonde todas as rotas se encontram separadas por contexto.
-- database, aonde o banco se encontra.
 - helpers, funções úteis a toda aplicação. Ex: Gerar senha aleatória.
 - models, modelos de tabela do banco de dados.
 - static, arquivos staticos. Ex: css, js, imagens.
 - templates, arquivos html com o template jinja.
+- apis, acesso a APIs externas.
 
 ### Estrutura:
 
@@ -84,6 +85,7 @@ Criamos o layout utilizando o Figma. Você pode encontrar o arquivo [aqui](https
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/) - Web development one drop at a time.
 - [SqlAlchemy](https://www.sqlalchemy.org/) - SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.
 - [Figma](https://figma.com/) - Online prototyping tool.
+- [ViaCEP](https://viacep.com.br/) - Consulte CEPs de todo o Brasil
 
 ## Integrantes do Projeto:
 

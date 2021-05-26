@@ -27,6 +27,15 @@
             <input type="text" disabled class="form-control" name="dataCriacao" id="dataCriacao"
                 value="{{usuario.dataCriacao}}">
         </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>CEP</label>
+            <input type="text" class="form-control" name="cep" id="cep" placeholder="cep" value="{{usuario.cep}}">
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Logradouro</label>
+            <input type="text" class="form-control" name="Logradouro" id="Logradouro" disabled
+                value="{{usuario.logradouro}}">
+        </div>
         <div class="form-check col-sm-12 col-lg-6 mt-2 ml-4">
             <input type="checkbox" class="form-check-input" name="ativo" id="ativo" {% if usuario.ativo==True %}
                 checked="checked" {% endif %}>
