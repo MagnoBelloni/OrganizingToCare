@@ -44,10 +44,13 @@ def novo_medicamento():
 @app.route("/medicamento/editar/<int:id>", methods=['GET', 'POST'])
 def editar_medicamento(id):
     # select from
+    
     medicamento = Medicamento.query.get(id)
     if request.method == 'POST':
+        dataVencimentoFormatada = datetime.strptime(
+        request.form['dataVencimento'], '%Y-%m-%d')
         medicamento.nome = request.form['nome']
-        medicamento.dataVencimento = request.form['dataVencimento']
+        dataVencimentoFormatada
         medicamento.quantidade = request.form['quantidade']
         medicamento.peso = request.form['peso']
         db.session.commit()
