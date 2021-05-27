@@ -5,10 +5,10 @@
 <form action="/usuario/novo" method="post">
     <div class="form-row">
         <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo">
+            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="text" class="form-control" name="login" id="login" placeholder="Login">
+            <input type="text" class="form-control" name="login" id="login" placeholder="Login" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Tipo de Usuário</label>
@@ -19,10 +19,16 @@
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Informe seu CEP</label>
-            <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP">
+            <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP" required>
         </div>
     </div>
-    <button class="btn btn-success mt-4" type="submit">Salvar</button>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col"></div>
+        <button class="btn btn-success mt-4" type="submit">Salvar</button>
+      </div>
+    
 </form>
 
 

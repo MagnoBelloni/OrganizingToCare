@@ -10,8 +10,10 @@
                 <th>Nome</th>
                 <th>Tipo</th>
                 <th>Login</th>
+                {% if session['usuario_tipo'] == 'administrador' %}
                 <th>Editar</th>
                 <th>Excluir</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -20,8 +22,10 @@
                 <td>{{usuario.nomeCompleto}}</td>
                 <td>{{usuario.tipo}}</td>
                 <td>{{usuario.login}}</td>
+                {% if session['usuario_tipo'] == 'administrador' %}
                 <td><a href="/usuario/editar/{{usuario.id}}" class="btn btn-success">Editar</a></td>
                 <td><a href="/usuario/excluir/{{usuario.id}}" class="btn btn-danger">Excluir</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>

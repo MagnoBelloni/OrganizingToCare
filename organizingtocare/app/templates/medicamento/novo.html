@@ -1,49 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-<br>
-<selection id="home" class="d-flex">
-    <div class="container align-self-center">
-      <div class="row" >
-        <div class="col-md-10 capa">
-      
-      <div id="carousel-controles" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-
-          <div class="carousel-item active">
-            <img src="{{url_for('static', filename='imagens/1.jpg')}}" alt="New york" style="width:100% " class="img-fluid">
-          </div>
-
-          <div class="carousel-item">
-            <img src="{{url_for('static', filename='imagens/2.jpg')}}" alt="New york" style="width:100% " class="img-fluid">
-          </div>
-          <div class="carousel-item">
-            <img src="{{url_for('static', filename='imagens/3.jpg')}}" alt="New york" style="width:100%" class="img-fluid">
-          </div>
-
-        
-        </div>
-        <a href="#carousel-controles" class="carousel-control-prev" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </a>
-
-        <a href="#carousel-controles" class="carousel-control-next" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </a>
-
-      </div>
-      
-
-      
-      
-
-    </div><!--/col-sm8 -->
-  </div><!--/Row -->
-</div><!--/Container --->
-</selection>
-<hr>
 <h1>Novo medicamento</h1>
-<hr>
+
 
 <form action="/medicamento/novo" method="post">
     <div class="form-row">
@@ -57,14 +16,14 @@
             <input type="text" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade">
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
-            <input class="form-control" name="peso" id="peso" placeholder="Peso" type="number" step="0.01">
+          <input type="text" class="form-control" name="peso" id="peso" placeholder="Peso">
         </div>
 
     </div>
     <button class="btn btn-success mt-4" type="submit">Salvar</button>
     
 </form>
-<hr>
+
 
 
 
