@@ -59,8 +59,10 @@ Criamos o layout utilizando o Figma. Você pode encontrar o arquivo [aqui](https
 
 ### Crie uma branch a partir da main
 
-- git checkout -b "feature/nome-da-branch"
-- git push
+- NUNCA faça um commit direto para a main.
+- git pull, para se certificar que a branch main está atualizada.
+- git checkout -b "feature/nome-da-branch".
+- git push --set-upstream origin feature/atualizacao-readme
 - Vá até o [Github](https://github.com/MagnoBelloni/AC5-OrganizingToCare).
 - Crie uma PR para a main.
 - Aguarde a aprovação da PR.
