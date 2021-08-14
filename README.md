@@ -55,6 +55,19 @@ Criamos o layout utilizando o Figma. Você pode encontrar o arquivo [aqui](https
 - app/**init**.py, inicia toda a aplicação.
 - app/controllers/default, arquivo de unificação de todos os controllers.
 
+## Para contribuir com o projeto
+
+### Crie uma branch a partir da main
+
+- git checkout -b "feature/nome-da-branch"
+- git push
+- Vá até o [Github](https://github.com/MagnoBelloni/AC5-OrganizingToCare).
+- Crie uma PR para a main.
+- Aguarde a aprovação da PR.
+- Se a PR estiver correta será aprovada e ira ser feito o merge com a main.
+- Rode o comando "git checkout main" para voltar para a branch main
+- Rode o comando "git pull", para atualizar sua branch main
+
 ## Para rodar a aplicação
 
 ### Criar o ambiente virtual
