@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Editar Paciente</h1>
+<hr>
+<form action="/paciente/editar/{{paciente.id}}" method="post">
+
+
+    <div class="form-row">
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Nome do Paciente</label>
+            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo"
+                value="{{paciente.nome}}">
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Data de Nascimento</label>
+            <input type="date" class="form-control" name="dataNascimento" id="dataNascimento" placeholder="dataNascimento"
+                value="{{paciente.dataNascimento.strftime('%Y-%m-%d')}}" required>
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Altura</label>
+            <input type="number" step="0.01" class="form-control" name="altura" id="altura" placeholder="Altura"
+                value="{{paciente.altura}}">
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Peso</label>
+            <input type="number" class="form-control" name="peso" id="peso" placeholder="Peso"
+                value="{{paciente.peso}}">
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Nome do Responsavel</label>
+            <input type="text" class="form-control" name="nomeResponsavel" id="nomeResponsavel" placeholder="Nome do Responsavel"
+                value="{{paciente.nomeResponsavel}}">
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Telefone do Responsavel</label>
+            <input type="text" class="form-control" name="telefoneResponsavel" id="telefoneResponsavel" placeholder="Nome do Responsavel"
+                value="{{paciente.telefoneResponsavel}}">
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Data de internação</label>
+            <input type="date" class="form-control" name="dataInternacao" id="dataInternacao"
+                value="{{paciente.dataInternacao.strftime('%Y-%m-%d')}}">
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <label>Data de Criação</label>
+            <input type="text" disabled class="form-control" name="dataCriacao" id="dataCriacao"
+                value="{{paciente.dataCriacao.strftime('%d/%m/%Y %H:%M:%S')}}">
+        </div>
+        <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
+</form>
+{% endblock %}
