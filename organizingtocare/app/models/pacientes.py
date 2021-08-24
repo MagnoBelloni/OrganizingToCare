@@ -15,7 +15,8 @@ class Paciente(db.Model):
     telefoneResponsavel = db.Column(db.String(50), nullable=False)
     dataInternacao = db.Column(db.DateTime, nullable=False)
     dataCriacao = db.Column(db.DateTime, default=dataCriacaoFormatada)
-    
+    # medicamentos = db.relationship('Medicamento', secondary=medicamento_paciente_table, backref=db.backref('medicamento_paciente', lazy='dynamic'))
+    medicamento_paciente_association = db.relationship('MedicamentoPaciente', back_populates="Paciente")
 
     def __init__(self, nome, dataNascimento, altura, peso, nomeResponsavel, telefoneResponsavel, dataInternacao):
         self.nome = nome

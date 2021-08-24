@@ -1,5 +1,6 @@
 from app import app, db
 from app.models.pacientes import Paciente
+from app.models.medicamento import Medicamento
 from flask import Flask, render_template, request, redirect, url_for
 from flask import flash, get_flashed_messages, json, jsonify
 from datetime import datetime
