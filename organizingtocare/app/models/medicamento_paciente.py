@@ -1,13 +1,5 @@
 from datetime import datetime
 from app import db
-# from app.models.medicamento import Medicamento
-
-# medicamento_paciente_table = db.Table('medicamento_paciente',
-#     db.Column('medicamento_id', db.Integer, db.ForeignKey('medicamento.id')),
-#     db.Column('paciente_id', db.Integer, db.ForeignKey('paciente.id')),
-#     db.Column('dataVencimento', db.DateTime),
-#     db.Column('quantidade', db.String(10))
-# )
 
 class MedicamentoPaciente(db.Model):
     medicamentoId = db.Column(db.Integer, db.ForeignKey('medicamento.id'), primary_key=True)

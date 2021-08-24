@@ -55,7 +55,6 @@ def editar_paciente(id):
 
         db.session.commit()
         return redirect(url_for('index_pacientes'))
-    print(paciente)
     return render_template("paciente/editar.html", paciente=paciente)
 
 

@@ -21,32 +21,46 @@ def novo_medicamento_paciente(paciente_id):
         dataVencimentoFormatada = datetime.strptime(
                     request.form['dataVencimento'], '%Y-%m-%d')
 
-        medicamento_paciente = MedicamentoPaciente(request.form['medicamentoId'], paciente_id, dataVencimentoFormatada, request.form['quantidade'])
+        medicamento_paciente = MedicamentoPaciente(
+            request.form['medicamentoId'],
+            paciente_id,
+            dataVencimentoFormatada,
+            request.form['quantidade'])
 
         db.session.add(medicamento_paciente)
-
         db.session.commit()
 
         return redirect(f"/paciente/editar/{paciente_id}")
-    medicamentos = MedicamentoPaciente.query.all()
+    medicamentos = Medicamento.query.all()
     return render_template("medicamento_paciente/novo.html", medicamentos=medicamentos, paciente_id=paciente_id)
 
 
-@app.route("/medicamento/editar/<int:id>", methods=['GET', 'POST'])
-def editar_medicamento_paciente(id):   
-    medicamento = Medicamento.query.get(id)
+@app.route("/medicamento_paciente/editar/<int:medicamentoId>/<int:pacienteId>", methods=['GET', 'POST'])
+def editar_medicamento_paciente(medicamentoId, pacienteId):   
+    medicamentos = Medicamento.query.all()
+    medicamento_paciente = MedicamentoPaciente.query.filter_by(medicamentoId=medicamentoId, pacienteId=pacienteId).first()
 
     if request.method == 'POST':
-        medicamento.nome = request.form['nome']
-        medicamento.descricao = request.form['descricao']
+        medicamento_paciente_existe = MedicamentoPaciente.query.filter_by(medicamentoId=request.form['medicamentoId'], pacienteId=pacienteId).first()
+        if medicamento_paciente_existe:
+            flash('Já existe um medicamento desse tipo vinculado a esse paciente!!')
+            return render_template("medicamento_paciente/editar.html", medicamentos=medicamentos, medicamento_paciente=medicamento_paciente)
+
+        dataVencimentoFormatada = datetime.strptime(
+                    request.form['dataVencimento'], '%Y-%m-%d')
+
+        medicamento_paciente.dataVencimento = dataVencimentoFormatada
+        medicamento_paciente.quantidade = request.form['quantidade']
+        medicamento_paciente.medicamentoId = request.form['medicamentoId']
+
         db.session.commit()
-        return redirect(url_for('index_medicamentos'))
-    return render_template("medicamento/editar.html", medicamento=medicamento)
+        return redirect(f"/paciente/editar/{pacienteId}")
+    return render_template("medicamento_paciente/editar.html", medicamentos=medicamentos, medicamento_paciente=medicamento_paciente)
 
 
-@app.route("/medicamento/excluir/<int:id>")
-def excluir_medicamento_paciente(id):
-    medicamento = Medicamento.query.get(id)
-    db.session.delete(medicamento)
+@app.route("/medicamento_paciente/excluir/<int:medicamentoId>/<int:pacienteId>")
+def excluir_medicamento_paciente(medicamentoId, pacienteId):
+    medicamento_paciente = MedicamentoPaciente.query.filter_by(medicamentoId=medicamentoId, pacienteId=pacienteId).first()
+    db.session.delete(medicamento_paciente)
     db.session.commit()
-    return redirect(url_for("index_medicamentos"))
+    return redirect(f"/paciente/editar/{pacienteId}")
