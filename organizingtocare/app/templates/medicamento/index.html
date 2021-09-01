@@ -8,20 +8,18 @@
         <thead>
             <tr>
                 <th>Nome do Medicamento</th>
-                <th>Data de Vencimento</th>
-                <th>Quantidade</th>
-                <th>Peso</th>
+                <th>Descrição</th>
                 <th>Data de criação</th>
+                <th>Editar</th>
+                <th>Excluir</th>
             </tr>
         </thead>
         <tbody>
             {% for medicamento in medicamentos %}
             <tr>
                 <td>{{medicamento.nome}}</td>
-                <td>{{medicamento.dataVencimento}}</td>
-                <td>{{medicamento.quantidade}}</td>
-                <td>{{medicamento.peso}}</td>
-                <td>{{medicamento.dataCriacao}}</td>
+                <td>{{medicamento.descricao}}</td>
+                <td>{{medicamento.dataCriacao.strftime('%d/%m/%Y')}}</td>
                 <td><a href="/medicamento/editar/{{medicamento.id}}" class="btn btn-success">Editar</a></td>
                 <td><a href="/medicamento/excluir/{{medicamento.id}}" class="btn btn-danger">Excluir</a></td>
             </tr>

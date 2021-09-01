@@ -1,6 +1,9 @@
-import datetime
+from datetime import datetime
 from app import db
 
+dataCriacao = datetime.now()
+dataCriacaoString = dataCriacao.strftime('%d/%m/%Y %H:%M:%S')
+dataCriacaoFormatada = datetime.strptime(dataCriacaoString,'%d/%m/%Y %H:%M:%S')
 
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -10,7 +13,7 @@ class Usuario(db.Model):
     tipo = db.Column(db.String(40), nullable=False)
     ativo = db.Column(db.Boolean, default=True)
     trocarSenha = db.Column(db.Boolean, default=True)
-    dataCriacao = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    dataCriacao = db.Column(db.DateTime, default=dataCriacaoFormatada)
     cep = db.Column(db.String(8), nullable=False)
     logradouro = db.Column(db.String(40), nullable=False)
 

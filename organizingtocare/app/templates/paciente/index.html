@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Pacientes</h1>
+<a class="btn btn-success text-white mt-2" href="/paciente/novo">Novo</a>
+
+<div class="table-responsive mt-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome do paciente</th>
+                <th>Nome do responsavel pelo paciente</th>
+                <th>Telefone do responsavel</th>
+                <th>Data da internação</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paciente in pacientes %}
+            <tr>
+                <td>{{paciente.nome}}</td>
+                <td>{{paciente.nomeResponsavel}}</td>
+                <td>{{paciente.telefoneResponsavel}}</td>
+                <td>{{paciente.dataInternacao.strftime('%d/%m/%Y')}}</td>
+                <td><a href="/paciente/editar/{{paciente.id}}" class="btn btn-success">Editar</a></td>
+                <td><a href="/paciente/excluir/{{paciente.id}}" class="btn btn-danger">Excluir</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
