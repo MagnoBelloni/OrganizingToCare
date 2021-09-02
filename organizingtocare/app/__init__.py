@@ -4,7 +4,7 @@ import psycopg2
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-with open('./credentials.json') as jsonFile:
+with open('./credentials/AppConfig.json') as jsonFile:
     data = json.load(jsonFile)
 
 host = data["host"]

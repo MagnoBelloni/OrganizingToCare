@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Editar Medicamento</h1>
+<!--h1>Editar Medicamento</-h1>
 <hr>
 <form action="/medicamento/editar/{{medicamento.id}}" method="post">
     <div class="form-row">
@@ -22,5 +22,60 @@
         <div class="col-sm-12">
             <button class="btn btn-success mt-5 col-md-2" type="submit">Salvar</button>
         </div>
-</form>
+</form-->
+ 
+                 <!-- Card -->
+            <div class="container  flex-column mt-2">
+                <div class="card smooth-shadow-md ">
+                  <!-- Card body -->
+                  <div class="card-body p-6">
+                    <div class="mb-4">
+                      <a href="../index.html"><img src="../assets/images/brand/logo/logo-primary.svg" class="mb-2" alt=""></a>
+                      <h2 class="d-flex justify-content-center">Editar Medicamento</h2>
+                    </div>
+                    <!-- Form -->
+                    <form action="/medicamento/editar/{{medicamento.id}}" method="post">
+                      <!-- Username -->
+                      <div class="form-row">
+                        <div class="col-sm-12 col-lg-6 mt-2">
+                            <label>Nome do Medicamento</label>
+                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo"
+                                value="{{medicamento.nome}}">
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mt-2">
+                            <label>Descrição do Medicamento</label>
+                            <input type="text" class="form-control" name="descricao" id="descricao"
+                                value="{{medicamento.descricao}}">
+                        </div>
+                      <!-- Password -->
+                      <div class="col-sm-12 col-lg-6 mt-2">
+                        <label>Data de Criação</label>
+                        <input type="text" disabled class="form-control" name="dataCriacao" id="dataCriacao"
+                            value="{{medicamento.dataCriacao.strftime('%d/%m/%Y %H:%M:%S')}}">
+                    </div>
+        
+                      </div>
+                      <div>
+                        <!-- Button -->
+                        <div class="d-grid">
+                            <button class="btn btn-success mt-5 col-md-4" type="submit">Salvar</button>
+                        </div>
+        
+                        <!--div class="d-md-flex justify-content-between mt-4">
+                          <div class="mb-2 mb-md-0">
+                            <a href="sign-up.html" class="fs-5">Create An
+                                Account </a>
+                          </div>
+                          <div>
+                            <a href="forget-password.html" class="text-inherit
+                                fs-5">Forgot your password?</a>
+                          </div>
+    
+                          
+        
+                        </div-->
+                      </div>
+        
+        
+                    </form>
 {% endblock %}
