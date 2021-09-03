@@ -1,35 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<!--h1>Medicamentos</!--h1>
-<a class="btn btn-success text-white mt-2" href="/medicamento/novo">Novo</a>
 
-<div class="table-responsive mt-5">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nome do Medicamento</th>
-                <th>Descrição</th>
-                <th>Data de criação</th>
-                <th>Editar</th>
-                <th>Excluir</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for medicamento in medicamentos %}
-            <tr>
-                <td>{{medicamento.nome}}</td>
-                <td>{{medicamento.descricao}}</td>
-                <td>{{medicamento.dataCriacao.strftime('%d/%m/%Y')}}</td>
-                <td><a href="/medicamento/editar/{{medicamento.id}}" class="btn btn-success">Editar</a></td>
-                <td><a href="/medicamento/excluir/{{medicamento.id}}" class="btn btn-danger">Excluir</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-<div class="row mt-6">
-    <div class="col-md-12 col-12"-->
       <!-- card  -->
       <div class="card mt-2">
         <!-- card header  -->
@@ -40,7 +11,7 @@
         <!-- table  -->
         <div class="table-responsive">
           <table class="table text-nowrap mb-0">
-            <thead class="table-light">
+            <thead class="table-dark">
               <tr>
                 <th>Nome do Medicamento</th>
                 <th>Descrição</th>

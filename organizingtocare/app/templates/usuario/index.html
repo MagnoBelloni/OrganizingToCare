@@ -9,64 +9,67 @@
 <a class="btn btn-success text-white mt-2" href="/usuario/novo">Novo</a>
 
 <!-- table  -->
-<div class="table-responsive">
-    <table class="table text-nowrap mb-0">
-      <thead class="table-light">
-            <tr>
-                <th>Nome</th>
-                <th>Tipo</th>
-                <th>Login</th>
-                {% if session['usuario_tipo'] == 'administrador' %}
-                <th>Editar</th>
-                <th>Excluir</th>
-                {% endif %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for usuario in usuarios %}
-            <tr>
-                <td>{{usuario.nomeCompleto}}</td>
-                <td>{{usuario.tipo}}</td>
-                <td>{{usuario.login}}</td>
-                {% if session['usuario_tipo'] == 'administrador' %}
-                <td><a href="/usuario/editar/{{usuario.id}}" class="btn btn-success">Editar</a></td>
-                <td><a href="/usuario/excluir/{{usuario.id}}" class="btn btn-danger">Excluir</a></td>
-                {% endif %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="card mt-2">
     <div class="table-responsive">
         <table class="table text-nowrap mb-0">
-          <thead class="table-light">
-            {% for usuario in usuarios %}
-            <tr>
-                <td>{{usuario.nomeCompleto}}</td>
-                <td>{{usuario.tipo}}</td>
-                <td>{{usuario.login}}</td>
-                {% if session['usuario_tipo'] == 'administrador' %}
-                <td><a href="/usuario/editar/{{usuario.id}}" class="btn btn-success">Editar</a></td>
-                <td><a href="/usuario/excluir/{{usuario.id}}" class="btn btn-danger">Excluir</a></td>
-                {% endif %}
-            </tr>
-            {% endfor %}
-          </thead>
+          <thead class="table-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Login</th>
+                    {% if session['usuario_tipo'] == 'administrador' %}
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{usuario.nomeCompleto}}</td>
+                    <td>{{usuario.tipo}}</td>
+                    <td>{{usuario.login}}</td>
+                    {% if session['usuario_tipo'] == 'administrador' %}
+                    <td><a href="/usuario/editar/{{usuario.id}}" class="btn btn-success">Editar</a></td>
+                    <td><a href="/usuario/excluir/{{usuario.id}}" class="btn btn-danger">Excluir</a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
-      </div>
-      <!-- card footer  -->
-      <div class="card-footer bg-white text-center">
-          <a href="#">Ver Todos os cadastros</a>
-  
+        <div class="table-responsive">
+            <table class="table text-nowrap mb-0">
+              <thead class="table-light">
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{usuario.nomeCompleto}}</td>
+                    <td>{{usuario.tipo}}</td>
+                    <td>{{usuario.login}}</td>
+                    {% if session['usuario_tipo'] == 'administrador' %}
+                    <td><a href="/usuario/editar/{{usuario.id}}" class="btn btn-success">Editar</a></td>
+                    <td><a href="/usuario/excluir/{{usuario.id}}" class="btn btn-danger">Excluir</a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+              </thead>
+            </table>
+          </div>
+          <!-- card footer  -->
+          <div class="card-footer bg-white text-center">
+              <a href="#">Ver Todos os cadastros</a>
+      
+                  </div>
+                </div>
+      
               </div>
             </div>
-  
-          </div>
-        </div>
-</div>
-</div>
+    </div>
+    </div>
+                </div>
             </div>
-        </div>
-    </div>        
+        </div>        
+    </div>
+    
 </div>
 
 
