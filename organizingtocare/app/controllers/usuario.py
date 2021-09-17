@@ -48,7 +48,24 @@ def novo_usuario():
     if request.method == 'POST':
         senha = gerar_senha_aleatoria()
         cep = request.form['cep']
-        logradouro = busca_cep(cep)
+        
+        # Validação CEP 
+        """
+        funciona, porém é necessário
+        criar uma condição para validar
+        quando for passado símbolos ou caracteres
+        especiais 
+        """
+        if cep.isalpha():
+            flash("CEP INCORRETO: o CEP não deve conter letras ou símbolos!")
+            return render_template("usuario/novo.html")
+        
+        elif (len(cep) < 8) or (len(cep)> 8):
+            flash("CEP INCORRETO: o CEP deve conter 8 dígitos apenas!")
+            return render_template("usuario/novo.html")
+        else:
+            logradouro = busca_cep(cep)
+        
         usuario = Usuario(
             request.form['nome'], request.form['login'], request.form['tipo'], senha, cep, logradouro)
 

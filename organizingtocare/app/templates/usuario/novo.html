@@ -28,8 +28,16 @@
         <div class="col"></div>
         <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
       </div>
-    
 </form>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li class="text-danger">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
 
 
 

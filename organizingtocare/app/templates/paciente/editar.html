@@ -7,7 +7,7 @@
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Nome do Paciente</label>
             <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo"
-                value="{{paciente.nome}}">
+                value="{{paciente.nome}}" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Data de Nascimento</label>
@@ -17,27 +17,27 @@
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Altura</label>
             <input type="number" step="0.01" class="form-control" name="altura" id="altura" placeholder="Altura"
-                value="{{paciente.altura}}">
+                value="{{paciente.altura}}" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Peso</label>
             <input type="number" class="form-control" name="peso" id="peso" placeholder="Peso"
-                value="{{paciente.peso}}">
+                value="{{paciente.peso}}" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Nome do Responsavel</label>
             <input type="text" class="form-control" name="nomeResponsavel" id="nomeResponsavel" placeholder="Nome do Responsavel"
-                value="{{paciente.nomeResponsavel}}">
+                value="{{paciente.nomeResponsavel}}" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Telefone do Responsavel</label>
             <input type="text" class="form-control" name="telefoneResponsavel" id="telefoneResponsavel" placeholder="Nome do Responsavel"
-                value="{{paciente.telefoneResponsavel}}">
+                value="{{paciente.telefoneResponsavel}}" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Data de internação</label>
             <input type="date" class="form-control" name="dataInternacao" id="dataInternacao"
-                value="{{paciente.dataInternacao.strftime('%Y-%m-%d')}}">
+                value="{{paciente.dataInternacao.strftime('%Y-%m-%d')}}"> #TODO permitir edição apenas se for adm 
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Data de Criação</label>
