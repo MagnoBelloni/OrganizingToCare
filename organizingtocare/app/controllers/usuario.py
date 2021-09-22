@@ -49,18 +49,8 @@ def novo_usuario():
         senha = gerar_senha_aleatoria()
         cep = request.form['cep']
         
-        # Validação CEP 
-        """
-        funciona, porém é necessário
-        criar uma condição para validar
-        quando for passado símbolos ou caracteres
-        especiais 
-        """
-        if cep.isalpha():
-            flash("CEP INCORRETO: o CEP não deve conter letras ou símbolos!")
-            return render_template("usuario/novo.html")
-        
-        elif (len(cep) < 8) or (len(cep)> 8):
+        # Validação CEP         
+        if (len(cep) < 8) or (len(cep)> 8):
             flash("CEP INCORRETO: o CEP deve conter 8 dígitos apenas!")
             return render_template("usuario/novo.html")
         else:
@@ -85,7 +75,14 @@ def editar_usuario(id):
         usuario.tipo = request.form['tipo']
         ativo = bool(request.form.get('ativo'))
         usuario.cep = request.form['cep']
-        usuario.logradouro = busca_cep(usuario.cep)
+        
+        # Validação CEP         
+        if (len(usuario.cep) < 8) or (len(usuario.cep)> 8):
+            flash("CEP INCORRETO: o CEP deve conter 8 dígitos apenas!")
+            return render_template(f"usuario/editar.html", usuario=usuario)
+        else:
+            usuario.logradouro = busca_cep(usuario.cep)
+        
         usuario.ativo = ativo
 
         db.session.commit()
