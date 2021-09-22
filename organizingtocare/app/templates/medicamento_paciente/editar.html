@@ -22,9 +22,6 @@
             <input type="text" class="form-control" name="quantidade" id="quantidade" value="{{medicamento_paciente.quantidade}}" placeholder="Quantidade do Medicamento" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="number" step="0.01" class="form-control" name="peso" id="peso" placeholder="Peso do Medicamento" required>
-        </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
             <label>Unidade de Medida do Medicamento</label>
             <select id="inputState" class="form-control" name="unidadeDeMedida">
                 <option value="litro" selected>(L)</option>
@@ -35,9 +32,6 @@
                 <option value="kilograma">(Kg)</option>
                 <option value="centímetro cúbico" selected>(cc)</option>
             </select>
-        </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="checkbox" class="form-control" name="psicotropico" id="psicotropico" placeholder="Medicamento psicotrópico?" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <input type="date" class="form-control" name="dataVencimento" id="dataVencimento" value="{{medicamento_paciente.dataVencimento.strftime('%Y-%m-%d')}}"

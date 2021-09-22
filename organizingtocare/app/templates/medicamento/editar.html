@@ -19,6 +19,11 @@
             <input type="text" disabled class="form-control" name="dataCriacao" id="dataCriacao"
                 value="{{medicamento.dataCriacao.strftime('%d/%m/%Y %H:%M:%S')}}">
         </div>
+        <div class="col-sm-12 col-lg-6 mt-2 ml-4">
+            <input type="checkbox" class="form-check-input" name="psicotropico" id="psicotropico" 
+            {% if medicamento.psicotropico %} checked="checked" {% endif %}>
+            <label class="form-check-label" for="psicotropico">Medicamento psicotrópico?</label>
+        </div>
         <div class="col-sm-12">
             <button class="btn btn-success mt-5 col-md-2" type="submit">Salvar</button>
         </div>

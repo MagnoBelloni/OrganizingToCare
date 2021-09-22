@@ -36,8 +36,14 @@
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Data de internação</label>
+            {% if session['usuario_tipo'] == 'administrador' %}
             <input type="date" class="form-control" name="dataInternacao" id="dataInternacao"
-                value="{{paciente.dataInternacao.strftime('%Y-%m-%d')}}"> #TODO permitir edição apenas se for adm 
+                value="{{paciente.dataInternacao.strftime('%Y-%m-%d')}}" >
+            {% else %}
+            <input type="date" class="form-control" name="dataInternacao" id="dataInternacao"
+                value="{{paciente.dataInternacao.strftime('%Y-%m-%d')}}" disabled>
+            {% endif %}
+            
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Data de Criação</label>
