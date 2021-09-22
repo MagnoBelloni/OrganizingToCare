@@ -10,7 +10,8 @@ class MedicamentoPaciente(db.Model):
     unidadeDeMedida = db.Column(db.String(40), nullable=False)
     psicotropico = db.Column(db.Boolean, default=True)
     
-    def __init__(self, medicamentoId, pacienteId, dataVencimento, quantidade):
+    def __init__(self, medicamentoId, pacienteId, dataVencimento, quantidade, 
+                peso, unidadeDeMedida, psicotropico):
         self.medicamentoId = medicamentoId
         self.pacienteId = pacienteId
         self.dataVencimento = dataVencimento

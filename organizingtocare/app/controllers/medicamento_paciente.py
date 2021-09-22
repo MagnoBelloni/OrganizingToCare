@@ -25,7 +25,10 @@ def novo_medicamento_paciente(paciente_id):
             request.form['medicamentoId'],
             paciente_id,
             dataVencimentoFormatada,
-            request.form['quantidade'])
+            request.form['quantidade'],
+            request.form['peso'],
+            request.form['unidadeDeMedida'],
+            request.form['psicotropico'])
 
         db.session.add(medicamento_paciente)
         db.session.commit()
@@ -52,6 +55,9 @@ def editar_medicamento_paciente(medicamentoId, pacienteId):
         medicamento_paciente.dataVencimento = dataVencimentoFormatada
         medicamento_paciente.quantidade = request.form['quantidade']
         medicamento_paciente.medicamentoId = request.form['medicamentoId']
+        medicamento_paciente.peso = request.form['peso']
+        medicamento_paciente.unidadeDeMedida = request.form['unidadeDeMedida']
+        medicamento_paciente.psicotropico = request.form['psicotropico']
 
         db.session.commit()
         return redirect(f"/paciente/editar/{pacienteId}")
