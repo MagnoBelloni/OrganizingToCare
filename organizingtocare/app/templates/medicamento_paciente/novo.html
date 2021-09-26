@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+<a href="/paciente/editar/{{paciente_id}}"> < Voltar</a>
 <h1>Novo Medicamento</h1>
 
 
@@ -15,23 +15,15 @@
             </select>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="text" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade do Medicamento" required>
+            <input type="text" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade Esperada" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Unidade de Medida do Medicamento</label>
-            <select id="inputState" class="form-control" name="unidadeDeMedida">
-                <option value="l">Litro - L</option>
-                <option value="ml">Mililitros - ml</option>
-                <option value="g">Grama - g</option>
-                <option value="mg">Miligrama - mg</option>
-                <option value="mcg">Micrograma - mcg</option>
-                <option value="kg">Kilograma - kg</option>
-                <option value="cc">Centímetro cúbico - cc</option>
+            <select id="inputState" class="form-control" name="unidadeMedida">
+            {% for unidade in unidadesMedida %}
+                <option value="{{unidadesMedida[unidade]}}">{{unidade}} - {{unidadesMedida[unidade]}}</option>
+            {% endfor %}
             </select>
-        </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="date" class="form-control" name="dataVencimento" id="dataVencimento"
-            data-toggle="tooltip" data-placement="right" title="Data de vencimento do medicamento" required>
         </div>
     </div>
     
