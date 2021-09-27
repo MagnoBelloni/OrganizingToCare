@@ -12,7 +12,7 @@ def novo_medicamento_estoque_registro(medicamento_estoque_id):
         medicamento_estoque = MedicamentoEstoque.query.get(medicamento_estoque_id)
         quantidadeRetirada = int(request.form['quantidade'])
         if medicamento_estoque.quantidade < quantidadeRetirada:
-            flash('Quantidade retirada é maior que a quantidade restante!')
+            flash('Quantidade aplicada é maior que a quantidade restante!')
             return render_template("medicamento_estoque/editar.html", medicamento_estoque=medicamento_estoque)
 
         medicamento_estoque.quantidade -= quantidadeRetirada

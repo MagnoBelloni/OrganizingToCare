@@ -10,7 +10,10 @@
         <div class="col-sm-12 col-lg-6 mt-2">
             <select class="custom-select" name="medicamentoId" id="cars">
                 {% for medicamento in medicamentos %}
-                    <option value="{{medicamento.id}}">{{medicamento.nome}}</option>
+                    <option value="{{medicamento.id}}">
+                        {{medicamento.nome}}
+                        {% if medicamento.psicotropico %} - Psicotropico {% endif %}
+                    </option>
                 {% endfor %}
             </select>
         </div>

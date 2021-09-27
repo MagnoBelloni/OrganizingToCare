@@ -67,15 +67,21 @@
             <tr>
                 <th>Nome do medicamento</th>
                 <th>Quantidade Receitada</th>
+                <th>Psicotropico</th>
                 <th>Editar</th>
                 <th>Excluir</th>
             </tr>
         </thead>
         <tbody>
             {% for medicamento in paciente.medicamento_paciente_association %}
-            <tr class="psicotropico">
+            <tr {% if medicamento.Medicamento.psicotropico %} class="psicotropico" {% endif %}>
                 <td>{{medicamento.Medicamento.nome}}</td>
                 <td>{{medicamento.quantidadeEsperada}}{{medicamento.unidadeDeMedida}}</td>
+                {% if medicamento.Medicamento.psicotropico %}
+                    <td>Sim</td>
+                {% else %}
+                    <td>Não</td>
+                {% endif %}
                 <td><a href="/medicamento_paciente/editar/{{medicamento.id}}" class="btn btn-success">Editar</a></td>
                 <td><a href="/medicamento_paciente/excluir/{{medicamento.id}}" class="btn btn-danger">Excluir</a></td>
             </tr>
