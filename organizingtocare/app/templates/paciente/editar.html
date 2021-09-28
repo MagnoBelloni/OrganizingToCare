@@ -52,6 +52,9 @@
             <input type="text" disabled class="form-control" name="dataCriacao" id="dataCriacao"
                 value="{{paciente.dataCriacao.strftime('%d/%m/%Y %H:%M:%S')}}">
         </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <h4><b>Idade:</b> {{paciente.idade}} anos</h4>
+        </div>
         <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
 </form>
 

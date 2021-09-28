@@ -1,6 +1,7 @@
 from app import app, db
 from app.models.pacientes import Paciente
 from app.models.medicamento import Medicamento
+from app.helpers.calcula_idade import CalcularIdade
 from flask import Flask, render_template, request, redirect, url_for
 from flask import flash, get_flashed_messages, json, jsonify
 from datetime import datetime
@@ -55,6 +56,7 @@ def editar_paciente(id):
 
         db.session.commit()
         return redirect(url_for('index_pacientes'))
+    paciente.idade = CalcularIdade(paciente.dataNascimento)
     return render_template("paciente/editar.html", paciente=paciente)
 
 

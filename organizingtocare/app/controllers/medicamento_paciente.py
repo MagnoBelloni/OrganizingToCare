@@ -2,6 +2,7 @@ from app import app, db
 from app.models.medicamento import Medicamento
 from app.models.pacientes import Paciente
 from app.models.medicamento_paciente import MedicamentoPaciente
+from app.models.medicamento_estoque import MedicamentoEstoque
 from flask import Flask, render_template, request, redirect, url_for
 from flask import flash, get_flashed_messages
 from datetime import datetime
@@ -47,6 +48,8 @@ def editar_medicamento_paciente(id):
 
         db.session.commit()
         return redirect(f"/paciente/editar/{medicamento_paciente.pacienteId}")
+
+    # medicamento_paciente.quantidadeTotalRestante = sum(medicamento_paciente_dic.values()['quantidade'])
     return render_template("medicamento_paciente/editar.html", medicamentos=medicamentos, medicamento_paciente=medicamento_paciente, unidadesMedida=unidadesMedida)
 
 

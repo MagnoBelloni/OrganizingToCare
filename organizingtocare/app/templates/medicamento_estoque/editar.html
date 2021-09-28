@@ -29,7 +29,9 @@
         <input 
             type="number" name="quantidade" required {% if medicamento_estoque.quantidade <= 0 %} disabled {% endif %}
         >{{medicamento_estoque.MedicamentoPaciente.unidadeDeMedida}}
-        <button class="btn btn-primary col-md-2 ml-4" type="submit">Novo Registro</button>
+        <button class="btn btn-primary col-md-2 ml-4" type="submit" {% if medicamento_estoque.quantidade <= 0 %} disabled {% endif %}>
+            Novo Registro
+        </button>
     </form>
 </div>
 {% with messages = get_flashed_messages() %}
