@@ -1,3 +1,5 @@
 from app.models.medicamento import Medicamento
 from app.models.pacientes import Paciente
 from app.models.medicamento_paciente import MedicamentoPaciente
+from app.models.medicamento_estoque import MedicamentoEstoque
+from app.models.medicamento_estoque_registro import MedicamentoEstoqueRegistro

@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+<a href="/paciente/editar/{{medicamento_paciente.pacienteId}}"> < Voltar</a>
+<h1>Editar Medicamento</h1>
 
-<h1>Novo Medicamento</h1>
 
-
-<form action="/medicamento_paciente/editar/{{medicamento_paciente.medicamentoId}}/{{medicamento_paciente.pacienteId}}" method="post">
+<form action="/medicamento_paciente/editar/{{medicamento_paciente.id}}" method="post">
 
     <div class="form-row">
         <div class="col-sm-12 col-lg-6 mt-2">
@@ -19,11 +19,17 @@
             </select>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="text" class="form-control" name="quantidade" id="quantidade" value="{{medicamento_paciente.quantidade}}" placeholder="Quantidade do Medicamento">
+            <input type="text" class="form-control" name="quantidade" id="quantidade" value="{{medicamento_paciente.quantidadeEsperada}}" placeholder="Quantidade Esperada" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="date" class="form-control" name="dataVencimento" id="dataVencimento" value="{{medicamento_paciente.dataVencimento.strftime('%Y-%m-%d')}}"
-                data-toggle="tooltip" data-placement="right" title="Data de vencimento do medicamento">
+            <label>Unidade de Medida do Medicamento</label>
+            <select id="inputState" class="form-control" name="unidadeMedida">
+                {% for unidade in unidadesMedida %}
+                    <option value="{{unidadesMedida[unidade]}}" {% if medicamento_paciente.unidadeDeMedida==unidadesMedida[unidade] %} selected {% endif %}>
+                        {{unidade}} - {{unidadesMedida[unidade]}}
+                    </option>
+                {% endfor %}
+            </select>
         </div>
     </div>
 
@@ -36,12 +42,40 @@
     </ul>
     {% endif %}
     {% endwith %}
-    
     <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
 
 </form>
 
+<div class="col-sm-12 mt-5">
+    <h3>Adicionar novo medicamento ao estoque</h3>
+    <hr>
+    <div>
+        <a class="btn btn-primary text-white col-sm-12 col-md-2" href="/medicamento_estoque/novo/{{medicamento_paciente.id}}">Novo Estoque</a>
+    </div>
+</div>
 
+<div class="table-responsive mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data de Vencimento</th>
+                <th>Quantidade Restante</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estoque in medicamento_paciente.medicamento_estoque_association %}
+            <tr {% if estoque.quantidadeInicial / 3 >= estoque.quantidade %} style="background: #FFE4E1;" {% endif %}>
+                <td>{{estoque.dataVencimento.strftime('%d/%m/%Y')}}</td>
+                <td>{{estoque.quantidade}}{{medicamento_paciente.unidadeDeMedida}}</td>
+                <td><a href="/medicamento_estoque/editar/{{estoque.id}}" class="btn btn-success">Editar</a></td>
+                <td><a href="/medicamento_estoque/excluir/{{estoque.id}}" class="btn btn-danger">Excluir</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 
 {% endblock %}

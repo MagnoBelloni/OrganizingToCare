@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="/medicamento_paciente/editar/{{medicamento_estoque.medicamentoPacienteId}}"> < Voltar</a>
+<h1>Editar Medicamento</h1>
+
+
+<form action="/medicamento_estoque/editar/{{medicamento_estoque.id}}" method="post">
+
+    <div class="form-row">
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <input type="date" class="form-control" name="dataVencimento" id="dataVencimento"
+            data-toggle="tooltip" data-placement="right" title="Data de vencimento do medicamento" value="{{medicamento_estoque.dataVencimento.strftime('%Y-%m-%d')}}" required>
+        </div>
+        <div class="col-sm-12 col-lg-6 mt-2">
+            <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade"
+            data-toggle="tooltip" data-placement="right" value="{{medicamento_estoque.quantidade}}" required>
+        </div>
+    </div>
+
+    <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
+</form>
+
+<div class="col-sm-12 mt-5">
+    <h3>Adicionar novo registro do estoque</h3>
+    <hr>
+    <b>Estoque: {{medicamento_estoque.quantidade}}/{{medicamento_estoque.quantidadeInicial}}</b>
+    <form action="/medicamento_estoque_registro/novo/{{medicamento_estoque.id}}" method="post">
+        <label for="quantidade">Quantidade aplicada:</label>
+        <input 
+            type="number" name="quantidade" required {% if medicamento_estoque.quantidade <= 0 %} disabled {% endif %}
+        >{{medicamento_estoque.MedicamentoPaciente.unidadeDeMedida}}
+        <button class="btn btn-primary col-md-2 ml-4" type="submit" {% if medicamento_estoque.quantidade <= 0 %} disabled {% endif %}>
+            Novo Registro
+        </button>
+    </form>
+</div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li class="text-danger">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<div class="table-responsive mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Quantidade aplicada</th>
+                <th>Registrado por</th>
+                <th>Data registro</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in medicamento_estoque.medicamento_estoque_registro_association %}
+            <tr>
+                <td>{{registro.quantidade}}{{medicamento_estoque.MedicamentoPaciente.unidadeDeMedida}}</td>
+                <td>{{registro.Usuario.nomeCompleto}}</td>
+                <td>{{registro.dataRegistro.strftime('%d/%m/%Y %H:%M:%S')}}</td>
+                <td><a href="/medicamento_estoque_registro/excluir/{{registro.id}}" class="btn btn-danger">Excluir</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

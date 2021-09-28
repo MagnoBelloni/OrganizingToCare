@@ -24,3 +24,4 @@ class Usuario(db.Model):
         self.senha = senha
         self.cep = cep
         self.logradouro = logradouro
+

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+<a href="/usuario"> < Voltar</a>
+
 <h1>Editar Usuário</h1>
 <hr>
 <form action="/usuario/editar/{{usuario.id}}" method="post">
@@ -7,12 +9,12 @@
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Nome Completo</label>
             <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo"
-                value="{{usuario.nomeCompleto}}">
+                value="{{usuario.nomeCompleto}}" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Login</label>
             <input type="text" class="form-control" name="login" id="login" placeholder="Login"
-                value="{{usuario.login}}">
+                value="{{usuario.login}}" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Tipo de Usuário</label>
@@ -29,7 +31,7 @@
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>CEP</label>
-            <input type="text" class="form-control" name="cep" id="cep" placeholder="cep" value="{{usuario.cep}}">
+            <input type="number" class="form-control" name="cep" id="cep" placeholder="cep" value="{{usuario.cep}}" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Logradouro</label>
@@ -49,7 +51,15 @@
     </div>
     <button class="btn btn-success mt-4" type="submit">Salvar</button>
 </form>
-
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li class="text-danger">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
 
 
 {% endblock %}

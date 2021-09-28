@@ -48,7 +48,14 @@ def novo_usuario():
     if request.method == 'POST':
         senha = gerar_senha_aleatoria()
         cep = request.form['cep']
-        logradouro = busca_cep(cep)
+        
+        # Validação CEP         
+        if (len(cep) < 8) or (len(cep)> 8):
+            flash("CEP INCORRETO: o CEP deve conter 8 dígitos apenas!")
+            return render_template("usuario/novo.html")
+        else:
+            logradouro = busca_cep(cep)
+        
         usuario = Usuario(
             request.form['nome'], request.form['login'], request.form['tipo'], senha, cep, logradouro)
 
@@ -68,7 +75,14 @@ def editar_usuario(id):
         usuario.tipo = request.form['tipo']
         ativo = bool(request.form.get('ativo'))
         usuario.cep = request.form['cep']
-        usuario.logradouro = busca_cep(usuario.cep)
+        
+        # Validação CEP         
+        if (len(usuario.cep) < 8) or (len(usuario.cep)> 8):
+            flash("CEP INCORRETO: o CEP deve conter 8 dígitos apenas!")
+            return render_template(f"usuario/editar.html", usuario=usuario)
+        else:
+            usuario.logradouro = busca_cep(usuario.cep)
+        
         usuario.ativo = ativo
 
         db.session.commit()

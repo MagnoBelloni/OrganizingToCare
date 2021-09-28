@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+<a href="/paciente/editar/{{paciente_id}}"> < Voltar</a>
 <h1>Novo Medicamento</h1>
 
 
@@ -10,16 +10,23 @@
         <div class="col-sm-12 col-lg-6 mt-2">
             <select class="custom-select" name="medicamentoId" id="cars">
                 {% for medicamento in medicamentos %}
-                    <option value="{{medicamento.id}}">{{medicamento.nome}}</option>
+                    <option value="{{medicamento.id}}">
+                        {{medicamento.nome}}
+                        {% if medicamento.psicotropico %} - Psicotropico {% endif %}
+                    </option>
                 {% endfor %}
             </select>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="text" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade do Medicamento">
+            <input type="text" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade Receita" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="date" class="form-control" name="dataVencimento" id="dataVencimento"
-            data-toggle="tooltip" data-placement="right" title="Data de vencimento do medicamento">
+            <label>Unidade de Medida do Medicamento</label>
+            <select id="inputState" class="form-control" name="unidadeMedida">
+            {% for unidade in unidadesMedida %}
+                <option value="{{unidadesMedida[unidade]}}">{{unidade}} - {{unidadesMedida[unidade]}}</option>
+            {% endfor %}
+            </select>
         </div>
     </div>
     

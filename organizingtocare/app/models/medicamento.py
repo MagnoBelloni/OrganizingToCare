@@ -10,7 +10,9 @@ class Medicamento(db.Model):
     nome = db.Column(db.String(50), nullable=False)
     descricao = db.Column(db.String(50), nullable=False)
     dataCriacao = db.Column(db.DateTime, default=dataCriacaoFormatada)
+    psicotropico = db.Column(db.Boolean)
 
-    def __init__(self, nome, descricao):
+    def __init__(self, nome, descricao, psicotropico):
         self.nome = nome
         self.descricao = descricao
+        self.psicotropico = psicotropico

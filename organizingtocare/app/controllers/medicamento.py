@@ -7,9 +7,8 @@ from datetime import datetime
 
 @app.route("/medicamento")
 def index_medicamentos():
-    medicamentos = Medicamento.query.all()
+    medicamentos = Medicamento.query.order_by(Medicamento.psicotropico.desc()).all()
     return render_template("medicamento/index.html", medicamentos=medicamentos)
-
 
 @app.route("/medicamento/novo", methods=['POST', 'GET'])
 def novo_medicamento():
@@ -22,7 +21,8 @@ def novo_medicamento():
 
         medicamento = Medicamento(
             request.form['nome'],
-            request.form['descricao'])
+            request.form['descricao'],
+            bool(request.form.get('psicotropico')))
         db.session.add(medicamento)
         db.session.commit()
         return redirect(url_for('index_medicamentos'))
@@ -37,6 +37,7 @@ def editar_medicamento(id):
     if request.method == 'POST':
         medicamento.nome = request.form['nome']
         medicamento.descricao = request.form['descricao']
+        medicamento.psicotropico = bool(request.form.get('psicotropico'))
         db.session.commit()
         return redirect(url_for('index_medicamentos'))
     return render_template("medicamento/editar.html", medicamento=medicamento)

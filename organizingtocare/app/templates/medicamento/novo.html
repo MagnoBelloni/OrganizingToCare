@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<a href="/medicamento"> < Voltar</a>
 
 <h1>Novo medicamento</h1>
 
@@ -7,21 +8,15 @@
 <form action="/medicamento/novo" method="post">
     <div class="form-row">
         <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do Medicamento">
+            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do Medicamento" required>
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição do Medicamento">
+            <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição do Medicamento" required>
         </div>
-        <!-- <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="date" class="form-control" name="dataVencimento" id="dataVencimeto" placeholder="Data de Vencimento" required>
+        <div class="form-check col-sm-12 col-lg-6 mt-2 ml-4">
+            <input type="checkbox" class="form-check-input" name="psicotropico" id="psicotropico">
+            <label class="form-check-label" for="psicotropico">Medicamento psicotrópico</label>
         </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="text" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade">
-        </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
-          <input type="text" class="form-control" name="peso" id="peso" placeholder="Peso">
-        </div> -->
-
     </div>
     
     <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>

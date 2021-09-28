@@ -4,3 +4,8 @@
     box-sizing: border-box;
     border-radius: 8px;
 }
+
+
+tr.psicotropico {
+    background: #A3CFBB;
+}
