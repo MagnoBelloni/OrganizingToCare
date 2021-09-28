@@ -35,6 +35,15 @@ Uma aplicação para gerenciar medicamentos.
 
 ![Preview](https://github.com/MagnoBelloni/AC5-OrganizingToCare/blob/main/documentacao/DiagramaBanco.jpg)
 
+![Conexão ao Banco de dados]
+
+- Para realizar a conexão ao Banco de Dados é necessário fazer o download de um arquivo .json contendo as 
+  credenciais do Banco de Dados em uma pasta do Google Drive
+- O nome da pasta é AppConfig, e o link é https://drive.google.com/drive/u/1/folders/1odwcZLYWGuf0w47j8ytTvCVnmu6vZEXV
+- O nome do arquivo necessário é AppConfig.json
+- Para ser feita a configuração das credenciais é só realizar a troca do arquivo AppConfig.json na pasta credentials
+  pelo arquivo de mesmo nome com origem na pasta do Drive
+
 ## Layout:
 
 Criamos o layout utilizando o Figma. Você pode encontrar o arquivo [aqui](https://www.figma.com/file/P3XmjCFWHuon7Yrnf1urkA/AC5-Aplica%C3%A7%C3%B5es-Distribuidas?node-id=14%3A507).
@@ -54,6 +63,7 @@ Criamos o layout utilizando o Figma. Você pode encontrar o arquivo [aqui](https
 - run.py, arquivo utilizado para rodar a aplicação.
 - app/**init**.py, inicia toda a aplicação.
 - app/controllers/default, arquivo de unificação de todos os controllers.
+- organizingtocare/credentials, pasta onde deve ser colocado o arquivo json com as crendenciais do DataBase 
 
 ## Para contribuir com o projeto
 
@@ -100,7 +110,7 @@ Criamos o layout utilizando o Figma. Você pode encontrar o arquivo [aqui](https
   and integrate systems more effectively.
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/) - Web development one drop at a time.
 - [SqlAlchemy](https://www.sqlalchemy.org/) - SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.
-- [SQLite](https://www.sqlite.org/) - SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
+- [PostgreSQL](https://www.postgresql.org/about/) - PostgreSQL is a powerful, open source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
 - [Figma](https://figma.com/) - Online prototyping tool.
 - [ViaCEP](https://viacep.com.br/) - Consulte CEPs de todo o Brasil
 
@@ -112,5 +122,5 @@ Criamos o layout utilizando o Figma. Você pode encontrar o arquivo [aqui](https
 
 ## Acknowledgments
 
-- Este projeto foi construído para a matéria Desenvolvimento de Aplicações Distribuídas, com a orientação do Professor Jadir Custódio Mendonça Junior,
-  durante o 3ºSemestre de Análise e Desenvolvimento de Sistemas da [Faculdade Impacta de Tecnologia](https://www.impacta.edu.br/).
+- Este projeto foi construído como trabalho de conclusão do curso de Análise e Desenvolvimento de Sistemas durante o 4ºSemestre de Análise e Desenvolvimento de Sistemas da [Faculdade Impacta de Tecnologia](https://www.impacta.edu.br/),sob a orientação do Professor Fernando Sequeira.
+
