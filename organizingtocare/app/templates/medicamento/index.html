@@ -1,38 +1,57 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Medicamentos</h1>
-<a class="btn btn-success text-white mt-2" href="/medicamento/novo">Novo</a>
 
-<div class="table-responsive mt-5">
-    <table class="table">
-        <thead>
-            <tr>
+      <!-- card  -->
+      <div class="card mt-2">
+        <!-- card header  -->
+        <div class="card-header bg-white border-bottom-0 py-4">
+          <h2 class="d-flex justify-content-center">Medicamentos</h2>
+          <a class="btn btn-success text-white mt-2" href="/medicamento/novo">Novo</a>
+        </div>
+        <!-- table  -->
+        <div class="table-responsive">
+          <table class="table text-nowrap mb-0">
+            <thead class="table-dark">
+              <tr>
                 <th>Nome do Medicamento</th>
                 <th>Descrição</th>
-                <th>Psicotropico</th>
                 <th>Data de criação</th>
                 <th>Editar</th>
                 <th>Excluir</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for medicamento in medicamentos %}
-            <tr>
-                <td>{{medicamento.nome}}</td>
-                <td>{{medicamento.descricao}}</td>
-                {% if medicamento.psicotropico %}
-                    <td>Sim</td>
-                {% else %}
-                    <td>Não</td>
-                {% endif %}
-                <td>{{medicamento.dataCriacao.strftime('%d/%m/%Y')}}</td>
-                <td><a href="/medicamento/editar/{{medicamento.id}}" class="btn btn-success">Editar</a></td>
-                <td><a href="/medicamento/excluir/{{medicamento.id}}" class="btn btn-danger">Excluir</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+              </tr>
+            </thead>
+            <tbody>
+                {% for medicamento in medicamentos %}
+              <tr>
+                <td class="align-middle"><div class="d-flex
+                    align-items-center">
+                    <div class="ms-3 lh-1">
+                      <h5 class="fw-bold mb-1">{{medicamento.nome}}</h5>
 
+                    </div>
+                  </div></td>
+                <td class="align-middle">{{medicamento.descricao}}</td>
+                <td class="align-middle"><span class="badge
+                    badge-warning">{{medicamento.dataCriacao.strftime('%d/%m/%Y')}}</span></td>
+                    <td><a href="/medicamento/editar/{{medicamento.id}}" class="btn btn-success">Editar</a></td>
+                    <td><a href="/medicamento/excluir/{{medicamento.id}}" class="btn btn-danger">Excluir</a></td>
+              </tr>
+                  </div>
+
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- card footer  -->
+        <div class="card-footer bg-white text-center">
+            <a href="#">Ver Todos os cadastros</a>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
 
 {% endblock %}

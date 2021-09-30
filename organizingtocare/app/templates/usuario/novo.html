@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="/usuario"> < Voltar</a>
+<a href="/usuario" class="btn btn-success mt-4 col-md-2" type="submit"> Voltar</a>
 
-<h1>Novo Usuário</h1>
+<div class="container  flex-column mt-2">
+        <div class="card smooth-shadow-md ">
+        <!-- Card body -->
+            <div class="card-body p-6">
+                <h1>Novo Usuário</h1>
 <hr>
 <form action="/usuario/novo" method="post">
     <div class="form-row">
@@ -21,7 +25,7 @@
         </div>
         <div class="col-sm-12 col-lg-6 mt-2">
             <label>Informe seu CEP</label>
-            <input type="number" class="form-control" name="cep" id="cep" placeholder="CEP" required>
+            <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP" required>
         </div>
     </div>
     <br>
@@ -30,16 +34,14 @@
         <div class="col"></div>
         <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
       </div>
+    
 </form>
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<ul>
-    {% for message in messages %}
-    <li class="text-danger">{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
+            </div>
+        </div>
+    </div>
+
+
+
 
 
 

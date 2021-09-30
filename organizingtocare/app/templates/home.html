@@ -1,33 +1,55 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-<h1>Bem vindo</h1>
-<hr>
-<div class="table-responsive mt-5">
-    <table class="table table-bordered table-hover">
-        <thead class="thead-dark">
-            <tr>
-                <th>Nome</th>
-                <th>Data Vencimento</th>
-                <th>Visualizar</th>
-            </tr>
+<div class="card mt-2">
+  <!-- card header  -->
+  <div class="card-header bg-white border-bottom-0 py-4">
+    <h2 class="d-flex justify-content-center">Pacientes</h2>
+  </div>
+  <!-- table  -->
+  <div class="table-responsive">
+    <table class="table text-nowrap mb-0">
+      <thead class="table-dark">
+          <tr>
+            <th>Nome</th>
+            <th>Data Vencimento</th>
+            <th>Visualizar</th>
+          </tr>
         </thead>
         <tbody>
-            <!-- {% for medicamento in medicamentos %}
-            <tr>
-                <td>{{medicamento.nome}}</td>
-                {% if medicamento.vencido %}
-                <td style="color: red;">{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
-                <td><a href="/medicamento/editar/{{medicamento.id}}" class="btn btn-warning">Visualizar</a></td>
-                {% endif %}
-                {% if not medicamento.vencido %}
-                <td>{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
-                <td><a href="/medicamento/editar/{{medicamento.id}}" class="btn btn-success">Visualizar</a></td>
-                {% endif %}
-            </tr>
-            {% endfor %} -->
+            {% for paciente in pacientes %}
+          <tr>
+            <td class="align-middle"><div class="d-flex
+                align-items-center">
+                <div class="ms-3 lh-1">
+                  <h5 class="fw-bold mb-1">{{paciente.nome}}</h5>
+
+                </div>
+              </div></td>
+            <td class="align-middle">{{paciente.nomeResponsavel}}</td>
+            <td class="align-middle">{{paciente.telefoneResponsavel}}</td>
+            <td class="align-middle"><span class="badge
+                badge-warning">{{paciente.dataInternacao.strftime('%d/%m/%Y')}}</span></td>
+                <td><a href="/paciente/editar/{{paciente.id}}" class="btn btn-success">Editar</a></td>
+                <td><a href="/paciente/excluir/{{paciente.id}}" class="btn btn-danger">Excluir</a></td>
+          </tr>
+              </div>
+
+            </td>
+          </tr>
+          {% endfor %}
         </tbody>
     </table>
+  
+    <!-- card footer  -->
+    <div class="card-footer bg-white text-center">
+        <a href="#">Ver Todos os cadastros</a>
+
+            </div>
+
+        
+  </div>
+  
 </div>
+
 {% endblock %}

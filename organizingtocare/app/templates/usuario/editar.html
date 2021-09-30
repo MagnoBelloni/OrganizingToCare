@@ -1,56 +1,76 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="/usuario"> < Voltar</a>
-
-<h1>Editar Usuário</h1>
-<hr>
-<form action="/usuario/editar/{{usuario.id}}" method="post">
-    <div class="form-row">
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <label>Nome Completo</label>
-            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo"
-                value="{{usuario.nomeCompleto}}" required>
-        </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <label>Login</label>
-            <input type="text" class="form-control" name="login" id="login" placeholder="Login"
-                value="{{usuario.login}}" required>
-        </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <label>Tipo de Usuário</label>
-            <select id="inputState" class="form-control" name="tipo">
-                <option value="comum" {% if usuario.tipo=='comum' %} selected="selected" {% endif %}>Comum</option>
-                <option value="administrador" {% if usuario.tipo=='administrador' %} selected="selected" {% endif %}>
-                    Administrador</option>
-            </select>
-        </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <label>Data de Criação</label>
-            <input type="text" disabled class="form-control" name="dataCriacao" id="dataCriacao"
-                value="{{usuario.dataCriacao.strftime('%d/%m/%Y %H:%M:%S')}}">
-        </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <label>CEP</label>
-            <input type="number" class="form-control" name="cep" id="cep" placeholder="cep" value="{{usuario.cep}}" required>
-        </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <label>Logradouro</label>
-            <input type="text" class="form-control" name="Logradouro" id="Logradouro" disabled
-                value="{{usuario.logradouro}}">
-        </div>
-        <div class="form-check col-sm-12 col-lg-6 mt-2 ml-4">
-            <input type="checkbox" class="form-check-input" name="ativo" id="ativo" {% if usuario.ativo==True %}
-                checked="checked" {% endif %}>
-            <label class="form-check-label" for="ativo">Ativo</label>
-        </div>
-        <div class="form-check col-6 offset-lg-6">
-            <a class="btn btn-warning text-white" data-toggle="tooltip" data-placement="right"
-                title="Se você clicar nesse botão a senha do usuário selecionado será resetada, e essa ação não poderá ser desfeita!"
-                href="/usuario/resetar_senha/{{usuario.id}}">Resetar Senha</a>
+<div class="container  flex-column mt-2">
+    <div class="card smooth-shadow-md mt-2 ">
+        <!-- Card body -->
+        <div class="card-body p-6">
+            <div class="mb-4">
+                <h2 class="d-flex justify-content-center">Editar Usuario
+                </h2>
+                  </div>
+                  <form action="/usuario/editar/{{usuario.id}}" method="post">
+                      <div class="form-row">
+                          <div class="col-sm-12 col-lg-6 mt-2">
+                              <label>Nome Completo</label>
+                              <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo"
+                                  value="{{usuario.nomeCompleto}}" required>
+                          </div>
+                          <div class="col-sm-12 col-lg-6 mt-2">
+                              <label>Login</label>
+                              <input type="text" class="form-control" name="login" id="login" placeholder="Login"
+                                  value="{{usuario.login}}" required>
+                          </div>
+                          <div class="col-sm-12 col-lg-6 mt-2">
+                              <label>Tipo de Usuário</label>
+                              <select id="inputState" class="form-control" name="tipo">
+                                  <option value="comum" {% if usuario.tipo=='comum' %} selected="selected" {% endif %}>Comum</option>
+                                  <option value="administrador" {% if usuario.tipo=='administrador' %} selected="selected" {% endif %}>
+                                      Administrador</option>
+                              </select>
+                          </div>
+                          <div class="col-sm-12 col-lg-6 mt-2">
+                              <label>Data de Criação</label>
+                              <input type="text" disabled class="form-control" name="dataCriacao" id="dataCriacao"
+                                  value="{{usuario.dataCriacao.strftime('%d/%m/%Y %H:%M:%S')}}">
+                          </div>
+                          <div class="col-sm-12 col-lg-6 mt-2">
+                              <label>CEP</label>
+                              <input type="number" class="form-control" name="cep" id="cep" placeholder="cep" value="{{usuario.cep}}" required>
+                          </div>
+                          <div class="col-sm-12 col-lg-6 mt-2">
+                              <label>Logradouro</label>
+                              <input type="text" class="form-control" name="Logradouro" id="Logradouro" disabled
+                                  value="{{usuario.logradouro}}">
+                          </div>
+                          <div class="form-check col-sm-12 col-lg-6 mt-2 ml-4">
+                              <input type="checkbox" class="form-check-input" name="ativo" id="ativo" {% if usuario.ativo==True %}
+                                  checked="checked" {% endif %}>
+                              <label class="form-check-label" for="ativo">Ativo</label>
+                          </div>
+                          <div class="form-check col-6 offset-lg-6">
+                              <a class="btn btn-warning text-white" data-toggle="tooltip" data-placement="right"
+                                  title="Se você clicar nesse botão a senha do usuário selecionado será resetada, e essa ação não poderá ser desfeita!"
+                                  href="/usuario/resetar_senha/{{usuario.id}}">Resetar Senha</a>
+                          </div>
+                      </div>
+                      <button class="btn btn-success mt-4" type="submit">Salvar</button>
+                  </div>
+               </div>
+            </form>
+            </div>
+            
         </div>
     </div>
-    <button class="btn btn-success mt-4" type="submit">Salvar</button>
-</form>
+        
+</div>
+    
+         
+
+              
+        
+    
+
+
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 <ul>
