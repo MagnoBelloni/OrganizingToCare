@@ -9,25 +9,21 @@
 		<div class="card-body p-6">
             <h2 class="d-flex justify-content-center">Novo Estoque de Medicamento</h2>
 
-
-            <form action="/medicamento/novo" method="post">
+            <form action="/medicamento_estoque/novo/{{medicamento_paciente_id}}" method="post">
                 <div class="form-row">
                     <div class="col-sm-12 col-lg-6 mt-2">
-                        <label  for="Nome do Medicamento">Nome do Medicamento</label>
-                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do Medicamento" required>
+                        <label for="Data de vencimento do medicamento">Data de vencimento do medicamento</label>
+                        <input type="date" class="form-control" name="dataVencimento" id="dataVencimento"
+                        data-toggle="tooltip" data-placement="right" title="Data de vencimento do medicamento" required>
                     </div>
                     <div class="col-sm-12 col-lg-6 mt-2">
-                        <label  for="Descrição do Medicamento">Descrição do Medicamento</label>
-                        <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição do Medicamento" required>
-                    </div>
-                    <div class="form-check col-sm-12 col-lg-6 mt-2 ml-4">
-                        <input type="checkbox" class="form-check-input" name="psicotropico" id="psicotropico">
-                        <label class="form-check-label" for="psicotropico">Medicamento psicotrópico</label>
+                        <label for="Quantidade">Quantidade</label>
+                        <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade"
+                        data-toggle="tooltip" data-placement="right" required>
                     </div>
                 </div>
                 
                 <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
-                
             </form>
 		</div>
 	</div>
