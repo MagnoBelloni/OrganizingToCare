@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="/usuario" class="btn btn-success mt-4 col-md-2" type="submit"> Voltar</a>
+<a href="/usuario" class="btn btn-success mt-4 col-md-1" type="submit">< Voltar</a>
 
 <div class="container  flex-column mt-2">
         <div class="card smooth-shadow-md ">
@@ -40,7 +40,15 @@
         </div>
     </div>
 
-
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li class="text-danger">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
 
 
 

@@ -2,7 +2,7 @@
 {% block content %}
     
     <!--button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button-->
-    
+    <a href="/medicamento" class="btn btn-success mt-4 col-md-1" > < Voltar</a>
 </form>
 
 
@@ -17,24 +17,25 @@
         </div>
         <!-- Form -->
         <form action="/medicamento/novo" method="post">
-          <!-- Username -->
           <div class="form-row">
-            <div class="col-sm-12 col-lg-6 mt-2">
-                <label>Nome do Medicamento</label>
-                <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do Medicamento">
-            </div>
-            <div class="col-sm-12 col-lg-6 mt-2">
-                <label>Descrição do Medicamento</label>
-                <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição do Medicamento">
-            </div>
-            <div class="col-sm-12">
-                <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
-            </div>
-
+              <div class="col-sm-12 col-lg-6 mt-2">
+                  <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do Medicamento" required>
+              </div>
+              <div class="col-sm-12 col-lg-6 mt-2">
+                  <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição do Medicamento" required>
+              </div>
+              <div class="form-check col-sm-12 col-lg-6 mt-2 ml-4">
+                  <input type="checkbox" class="form-check-input" name="psicotropico" id="psicotropico">
+                  <label class="form-check-label" for="psicotropico">Medicamento psicotrópico</label>
+              </div>
           </div>
+          
+          <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
+          
+      </form>
+      </div>
 
-
-        </form>
+    </div>
         <!--fim-->
 
 {% endblock %}

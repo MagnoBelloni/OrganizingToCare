@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="/paciente/editar/{{paciente_id}}"> < Voltar</a>
-<h1>Novo Medicamento</h1>
+<a href="/paciente/editar/{{paciente_id}}" class="btn btn-success mt-4 col-md-1"> < Voltar</a>
+<div class="container  flex-column mt-2">
+    <div class="card smooth-shadow-md mt-2 ">
+        <div class="card-body p-6">
+            <h2 class="d-flex justify-content-center">Novo Medicamento</h2>
 
 
 <form action="/medicamento_paciente/novo/{{paciente_id}}" method="post">
@@ -33,6 +36,11 @@
     <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
 
 </form>
+        </div>
+    </div>
+</div>
+    
+
 
 
 

@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="/medicamento_paciente/editar/{{medicamento_paciente_id}}"> < Voltar</a>
-<h1>Novo Estoque de Medicamento</h1>
+<a href="/medicamento_paciente/editar/{{medicamento_paciente_id}}" class="btn btn-primary mt-4 col-md-1 ml-2" > < Voltar</a>
+
+<div class="container  flex-column mt-2">
+	<div class="card smooth-shadow-md mt-2 ">
+		<div class="card-body p-6">
+            <h2 class="d-flex justify-content-center">Novo Estoque de Medicamento</h2>
 
 
 <form action="/medicamento_estoque/novo/{{medicamento_paciente_id}}" method="post">
@@ -18,6 +22,12 @@
     
     <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
 </form>
+		</div>
+	</div>
+</div>
+  
+
+
 
 
 

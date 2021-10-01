@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="/medicamento_paciente/editar/{{medicamento_estoque.medicamentoPacienteId}}"> < Voltar</a>
-<h1>Editar Medicamento</h1>
+
+<a href="/medicamento_paciente/editar/{{medicamento_estoque.medicamentoPacienteId}}" class="btn btn-primary mt-4 col-md-1 ml-2"> < Voltar</a>
+
+<div class="container  flex-column mt-2">
+	<div class="card smooth-shadow-md mt-2 ">
+		<div class="card-body p-6">
+            <h2 class="d-flex justify-content-center">Editar Medicamento</h2>
 
 
 <form action="/medicamento_estoque/editar/{{medicamento_estoque.id}}" method="post">
@@ -21,7 +26,7 @@
 </form>
 
 <div class="col-sm-12 mt-5">
-    <h3>Adicionar novo registro do estoque</h3>
+    <h2 class="d-flex justify-content-center">Adicionar novo registro do estoque</h2>
     <hr>
     <b>Estoque: {{medicamento_estoque.quantidade}}/{{medicamento_estoque.quantidadeInicial}}</b>
     <form action="/medicamento_estoque_registro/novo/{{medicamento_estoque.id}}" method="post">
@@ -43,10 +48,10 @@
 </ul>
 {% endif %}
 {% endwith %}
-<div class="table-responsive mt-3">
-    <table class="table">
-        <thead>
-            <tr>
+
+    <div class="table-responsive  mt-3">
+        <table class="table text-nowrap mb-1">
+          <thead class="table-dark">
                 <th>Quantidade aplicada</th>
                 <th>Registrado por</th>
                 <th>Data registro</th>
@@ -65,5 +70,13 @@
         </tbody>
     </table>
 </div>
+		</div>
+	</div>
+</div>
+
+<hr>
+  
+
+
 
 {% endblock %}
