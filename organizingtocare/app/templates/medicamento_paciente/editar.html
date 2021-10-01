@@ -1,54 +1,57 @@
 {% extends "base.html" %}
 {% block content %}
-<a class="btn btn-success mt-4 col-md-1" href="/paciente/editar/{{medicamento_paciente.pacienteId}}"> < Voltar</a>
+
 <div class="container  flex-column mt-2">
-    <div class="card smooth-shadow-md ">
+    <a class="btn btn-success mt-4 col-md-1" href="/paciente/editar/{{medicamento_paciente.pacienteId}}"> < Voltar</a>
+    <div class="card smooth-shadow-md mt-2 ">
         <!-- Card body -->
         <div class="card-body p-6">
             <div class="card-header bg-white border-bottom-0 py-4">
                 <h2 class="d-flex justify-content-center">Editar Medicamento</h2>
             </div>
-                <form action="/medicamento_paciente/editar/{{medicamento_paciente.id}}" method="post">
+            <form action="/medicamento_paciente/editar/{{medicamento_paciente.id}}" method="post">
 
-                    <div class="form-row">
-                        <div class="col-sm-12 col-lg-6 mt-2">
-                            <select class="custom-select" name="medicamentoId" id="cars" default={{medicamento_paciente.medicamentoId}}>
-                                {% for medicamento in medicamentos %}
-                                    {% if medicamento.id == medicamento_paciente.medicamentoId %}
-                                        <option value="{{medicamento.id}}" selected>{{medicamento.nome}}</option>
-                                    {% else %}
-                                        <option value="{{medicamento.id}}">{{medicamento.nome}}</option>
-                                    {% endif %}
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-sm-12 col-lg-6 mt-2">
-                            <input type="text" class="form-control" name="quantidade" id="quantidade" value="{{medicamento_paciente.quantidadeEsperada}}" placeholder="Quantidade Esperada" required>
-                        </div>
-                        <div class="col-sm-12 col-lg-6 mt-2">
-                            <label>Unidade de Medida do Medicamento</label>
-                            <select id="inputState" class="form-control" name="unidadeMedida">
-                                {% for unidade in unidadesMedida %}
-                                    <option value="{{unidadesMedida[unidade]}}" {% if medicamento_paciente.unidadeDeMedida==unidadesMedida[unidade] %} selected {% endif %}>
-                                        {{unidade}} - {{unidadesMedida[unidade]}}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </div>
+                <div class="form-row">
+                    <div class="col-sm-12 col-lg-6 mt-2">
+                        <label  for="Medicamento">Medicamento</label>
+                        <select class="custom-select" name="medicamentoId" id="cars" default={{medicamento_paciente.medicamentoId}}>
+                            {% for medicamento in medicamentos %}
+                                {% if medicamento.id == medicamento_paciente.medicamentoId %}
+                                    <option value="{{medicamento.id}}" selected>{{medicamento.nome}}</option>
+                                {% else %}
+                                    <option value="{{medicamento.id}}">{{medicamento.nome}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
                     </div>
-                
-                    {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                    <ul>
-                        {% for message in messages %}
-                        <li class="text-danger">{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                    {% endwith %}
-                    <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
-                
-                </form>
+                    <div class="col-sm-12 col-lg-6 mt-2">
+                        <label  for="Quantidade Esperada">Quantidade Esperada</label>
+                        <input type="text" class="form-control" name="quantidade" id="quantidade" value="{{medicamento_paciente.quantidadeEsperada}}" placeholder="Quantidade Esperada" required>
+                    </div>
+                    <div class="col-sm-12 col-lg-6 mt-2">
+                        <label>Unidade de Medida do Medicamento</label>
+                        <select id="inputState" class="form-control" name="unidadeMedida">
+                            {% for unidade in unidadesMedida %}
+                                <option value="{{unidadesMedida[unidade]}}" {% if medicamento_paciente.unidadeDeMedida==unidadesMedida[unidade] %} selected {% endif %}>
+                                    {{unidade}} - {{unidadesMedida[unidade]}}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li class="text-danger">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+                <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
+            
+            </form>
                 
                 <div class="col-sm-12 mt-5">
                     <h2 class="d-flex justify-content-center">Adicionar novo medicamento ao estoque</h2>

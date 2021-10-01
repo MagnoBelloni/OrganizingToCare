@@ -15,27 +15,26 @@
               <tr>
                 <th>Nome do Medicamento</th>
                 <th>Descrição</th>
+                <th>Psicotropico</th>
                 <th>Data de criação</th>
                 <th>Editar</th>
                 <th>Excluir</th>
               </tr>
             </thead>
             <tbody>
-                {% for medicamento in medicamentos %}
-              <tr>
-                <td class="align-middle"><div class="d-flex
-                    align-items-center">
-                    <div class="ms-3 lh-1">
-                      <h5 class="fw-bold mb-1">{{medicamento.nome}}</h5>
-
-                    </div>
-                  </div></td>
-                <td class="align-middle">{{medicamento.descricao}}</td>
-                <td class="align-middle"><span class="badge
-                    badge-warning">{{medicamento.dataCriacao.strftime('%d/%m/%Y')}}</span></td>
-                    <td><a href="/medicamento/editar/{{medicamento.id}}" class="btn btn-success">Editar</a></td>
-                    <td><a href="/medicamento/excluir/{{medicamento.id}}" class="btn btn-danger">Excluir</a></td>
-              </tr>
+              {% for medicamento in medicamentos %}
+            <tr>
+                <td>{{medicamento.nome}}</td>
+                <td>{{medicamento.descricao}}</td>
+                {% if medicamento.psicotropico %}
+                    <td>Sim</td>
+                {% else %}
+                    <td>Não</td>
+                {% endif %}
+                <td>{{medicamento.dataCriacao.strftime('%d/%m/%Y')}}</td>
+                <td><a href="/medicamento/editar/{{medicamento.id}}" class="btn btn-success">Editar</a></td>
+                <td><a href="/medicamento/excluir/{{medicamento.id}}" class="btn btn-danger">Excluir</a></td>
+            </tr>
                   </div>
 
                 </td>

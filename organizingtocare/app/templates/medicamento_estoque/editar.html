@@ -1,29 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
 
-<a href="/medicamento_paciente/editar/{{medicamento_estoque.medicamentoPacienteId}}" class="btn btn-primary mt-4 col-md-1 ml-2"> < Voltar</a>
+
 
 <div class="container  flex-column mt-2">
+    <a href="/medicamento_paciente/editar/{{medicamento_estoque.medicamentoPacienteId}}" class="btn btn-primary mt-4 col-md-0 "> < Voltar</a>
 	<div class="card smooth-shadow-md mt-2 ">
 		<div class="card-body p-6">
             <h2 class="d-flex justify-content-center">Editar Medicamento</h2>
 
 
-<form action="/medicamento_estoque/editar/{{medicamento_estoque.id}}" method="post">
+            <form action="/medicamento_estoque/editar/{{medicamento_estoque.id}}" method="post">
 
-    <div class="form-row">
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="date" class="form-control" name="dataVencimento" id="dataVencimento"
-            data-toggle="tooltip" data-placement="right" title="Data de vencimento do medicamento" value="{{medicamento_estoque.dataVencimento.strftime('%Y-%m-%d')}}" required>
-        </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade"
-            data-toggle="tooltip" data-placement="right" value="{{medicamento_estoque.quantidade}}" required>
-        </div>
-    </div>
-
-    <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
-</form>
+                <div class="form-row">
+                    <div class="col-sm-12 col-lg-6 mt-2">
+                        <label for="Data de vencimento do medicamento">Data de vencimento do medicamento</label>
+                        <input type="date" class="form-control" name="dataVencimento" id="dataVencimento"
+                        data-toggle="tooltip" data-placement="right" title="Data de vencimento do medicamento" value="{{medicamento_estoque.dataVencimento.strftime('%Y-%m-%d')}}" required>
+                    </div>
+                    <div class="col-sm-12 col-lg-6 mt-2">
+                        <label for="Quantidade">Quantidade</label>
+                        <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade"
+                        data-toggle="tooltip" data-placement="right" value="{{medicamento_estoque.quantidade}}" required>
+                    </div>
+                </div>
+            
+                <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
+            </form>
 
 <div class="col-sm-12 mt-5">
     <h2 class="d-flex justify-content-center">Adicionar novo registro do estoque</h2>
