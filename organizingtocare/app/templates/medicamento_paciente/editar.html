@@ -1,81 +1,99 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="/paciente/editar/{{medicamento_paciente.pacienteId}}"> < Voltar</a>
-<h1>Editar Medicamento</h1>
 
+<div class="container  flex-column mt-2">
+    <a class="btn btn-success mt-4 col-md-1" href="/paciente/editar/{{medicamento_paciente.pacienteId}}"> < Voltar</a>
+    <div class="card smooth-shadow-md mt-2 ">
+        <!-- Card body -->
+        <div class="card-body p-6">
+            <div class="card-header bg-white border-bottom-0 py-4">
+                <h2 class="d-flex justify-content-center">Editar Medicamento</h2>
+            </div>
+            <form action="/medicamento_paciente/editar/{{medicamento_paciente.id}}" method="post">
 
-<form action="/medicamento_paciente/editar/{{medicamento_paciente.id}}" method="post">
-
-    <div class="form-row">
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <select class="custom-select" name="medicamentoId" id="cars" default={{medicamento_paciente.medicamentoId}}>
-                {% for medicamento in medicamentos %}
-                    {% if medicamento.id == medicamento_paciente.medicamentoId %}
-                        <option value="{{medicamento.id}}" selected>{{medicamento.nome}}</option>
-                    {% else %}
-                        <option value="{{medicamento.id}}">{{medicamento.nome}}</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-        </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <input type="text" class="form-control" name="quantidade" id="quantidade" value="{{medicamento_paciente.quantidadeEsperada}}" placeholder="Quantidade Esperada" required>
-        </div>
-        <div class="col-sm-12 col-lg-6 mt-2">
-            <label>Unidade de Medida do Medicamento</label>
-            <select id="inputState" class="form-control" name="unidadeMedida">
-                {% for unidade in unidadesMedida %}
-                    <option value="{{unidadesMedida[unidade]}}" {% if medicamento_paciente.unidadeDeMedida==unidadesMedida[unidade] %} selected {% endif %}>
-                        {{unidade}} - {{unidadesMedida[unidade]}}
-                    </option>
-                {% endfor %}
-            </select>
+                <div class="form-row">
+                    <div class="col-sm-12 col-lg-6 mt-2">
+                        <label  for="Medicamento">Medicamento</label>
+                        <select class="custom-select" name="medicamentoId" id="cars" default={{medicamento_paciente.medicamentoId}}>
+                            {% for medicamento in medicamentos %}
+                                {% if medicamento.id == medicamento_paciente.medicamentoId %}
+                                    <option value="{{medicamento.id}}" selected>{{medicamento.nome}}</option>
+                                {% else %}
+                                    <option value="{{medicamento.id}}">{{medicamento.nome}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-lg-6 mt-2">
+                        <label  for="Quantidade Esperada">Quantidade Esperada</label>
+                        <input type="text" class="form-control" name="quantidade" id="quantidade" value="{{medicamento_paciente.quantidadeEsperada}}" placeholder="Quantidade Esperada" required>
+                    </div>
+                    <div class="col-sm-12 col-lg-6 mt-2">
+                        <label>Unidade de Medida do Medicamento</label>
+                        <select id="inputState" class="form-control" name="unidadeMedida">
+                            {% for unidade in unidadesMedida %}
+                                <option value="{{unidadesMedida[unidade]}}" {% if medicamento_paciente.unidadeDeMedida==unidadesMedida[unidade] %} selected {% endif %}>
+                                    {{unidade}} - {{unidadesMedida[unidade]}}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li class="text-danger">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+                <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
+            
+            </form>
+                
+                <div class="col-sm-12 mt-5">
+                    <h2 class="d-flex justify-content-center">Adicionar novo medicamento ao estoque</h2>
+                    <hr>
+                    <div>
+                        <a class="btn btn-primary text-white col-sm-12 col-md-2" href="/medicamento_estoque/novo/{{medicamento_paciente.id}}">Novo Estoque</a>
+                    </div>
+                </div>
+                
+                    <div class="table-responsive mt-3">
+                        <table class="table text-nowrap mb-0">
+                          <thead class="table-dark">
+                            <tr>
+                                <th>Data de Vencimento</th>
+                                <th>Quantidade Restante</th>
+                                <th>Editar</th>
+                                <th>Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for estoque in medicamento_paciente.medicamento_estoque_association %}
+                            <tr {% if estoque.quantidadeInicial / 3 >= estoque.quantidade %} style="background: #FFE4E1;" {% endif %}>
+                                <td>{{estoque.dataVencimento.strftime('%d/%m/%Y')}}</td>
+                                <td>{{estoque.quantidade}}{{medicamento_paciente.unidadeDeMedida}}</td>
+                                <td><a href="/medicamento_estoque/editar/{{estoque.id}}" class="btn btn-success">Editar</a></td>
+                                <td><a href="/medicamento_estoque/excluir/{{estoque.id}}" class="btn btn-danger">Excluir</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+            
+            
         </div>
     </div>
-
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li class="text-danger">{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
-    <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
-
-</form>
-
-<div class="col-sm-12 mt-5">
-    <h3>Adicionar novo medicamento ao estoque</h3>
-    <hr>
-    <div>
-        <a class="btn btn-primary text-white col-sm-12 col-md-2" href="/medicamento_estoque/novo/{{medicamento_paciente.id}}">Novo Estoque</a>
-    </div>
+        
 </div>
+<hr>
+    
 
-<div class="table-responsive mt-3">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Data de Vencimento</th>
-                <th>Quantidade Restante</th>
-                <th>Editar</th>
-                <th>Excluir</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for estoque in medicamento_paciente.medicamento_estoque_association %}
-            <tr {% if estoque.quantidadeInicial / 3 >= estoque.quantidade %} style="background: #FFE4E1;" {% endif %}>
-                <td>{{estoque.dataVencimento.strftime('%d/%m/%Y')}}</td>
-                <td>{{estoque.quantidade}}{{medicamento_paciente.unidadeDeMedida}}</td>
-                <td><a href="/medicamento_estoque/editar/{{estoque.id}}" class="btn btn-success">Editar</a></td>
-                <td><a href="/medicamento_estoque/excluir/{{estoque.id}}" class="btn btn-danger">Excluir</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+
 
 
 {% endblock %}

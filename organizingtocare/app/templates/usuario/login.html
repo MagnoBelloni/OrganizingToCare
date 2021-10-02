@@ -7,35 +7,60 @@
     <title>Organizing To Care</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/tema.css')}}">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg text-center navbar-light bg-dark">
         <a class="navbar-brand text-white " href="#">Organizing to Care</a>
     </nav>
-    <div class="container">
-        <div class="card text-center mt-5">
-            <div class="card-body">
-                <h1 class="card-title">Login</h1>
+            <!-- Card -->
+            <div class="container  flex-column mt-2">
+            <div class="card smooth-shadow-md ">
+              <!-- Card body -->
+              <div class="card-body p-6">
+                <div class="mb-4">
+                  <a href="../index.html"><img src="../assets/images/brand/logo/logo-primary.svg" class="mb-2" alt=""></a>
+                  <p class="mb-6">Login entrar</p>
+                </div>
+                <!-- Form -->
                 <form action="/" method="post">
-                    <div class="input-group col-sm-12 col-lg-10 mt-2">
-                        <input type="text" class="form-control" name="login" id="login" placeholder="Login">
+                  <!-- Username -->
+                  <div class="mb-3">
+                    <label for="login" class="form-label">Nome de Usuario</label>
+                    <input type="text" class="form-control" name="login" id="login" placeholder="Login">
+                  </div>
+                  <!-- Password -->
+                  <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha">
+                  </div>
+                  
+                  <div>
+                    <!-- Button -->
+                    <div class="d-grid">
+                      <button type="submit" class="btn btn-primary mt-5 col-md-12">Entrar</button>
                     </div>
-                    <div class="input-group col-sm-12 col-lg-10 mt-2">
-                        <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha">
-                    </div>
-                    <button class="btn btn-primary mt-4" type="submit">Entrar</button>
+    
+                  </div>
+    
+    
                 </form>
+
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
                 <ul>
                     {% for message in messages %}
-                    <li class="text-danger">{{ message }}</li>
+                    <li style="list-style: none;" class="text-danger">{{ message }}</li>
                     {% endfor %}
                 </ul>
                 {% endif %}
                 {% endwith %}
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+    
 </body>
