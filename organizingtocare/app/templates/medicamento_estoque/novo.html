@@ -13,16 +13,21 @@
                 <div class="form-row">
                     <div class="col-sm-12 col-lg-6 mt-2">
                         <label for="Data de vencimento do medicamento">Data de vencimento do medicamento</label>
-                        <input type="date" class="form-control" name="dataVencimento" id="dataVencimento"
-                        data-toggle="tooltip" data-placement="right" title="Data de vencimento do medicamento" required>
+                        <input type="date" class="form-control" name="dataVencimento" id="dataVencimento" required>
                     </div>
                     <div class="col-sm-12 col-lg-6 mt-2">
                         <label for="Quantidade">Quantidade</label>
-                        <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade"
-                        data-toggle="tooltip" data-placement="right" required>
+                        <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade" required>
+                    </div>
+                    <div class="col-sm-12 col-lg-6 mt-2">
+                        <label for="Quantidade">Lote</label>
+                        <input type="text" class="form-control" name="lote" id="lote" placeholder="Lote" required>
+                    </div>
+                    <div class="col-sm-12 col-lg-6 mt-2">
+                        <label for="nomePessoaTrouxeMedicamento">Nome de quem trouxe o medicamento</label>
+                        <input type="text" class="form-control" name="nomePessoaTrouxeMedicamento" id="nomePessoaTrouxeMedicamento" placeholder="Nome de quem trouxe o medicamento" required>
                     </div>
                 </div>
-                
                 <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
             </form>
 		</div>

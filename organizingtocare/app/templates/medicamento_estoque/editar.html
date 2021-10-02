@@ -23,6 +23,14 @@
                         <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Quantidade"
                         data-toggle="tooltip" data-placement="right" value="{{medicamento_estoque.quantidade}}" required>
                     </div>
+                    <div class="col-sm-12 col-lg-6 mt-2">
+                        <label for="Quantidade">Lote</label>
+                        <input type="text" class="form-control" name="lote" id="lote" placeholder="Lote" value="{{medicamento_estoque.lote}}" required>
+                    </div>
+                    <div class="col-sm-12 col-lg-6 mt-2">
+                        <label for="nomeTrouxeMedicamento">Nome de quem trouxe o medicamento</label>
+                        <input type="text" class="form-control" name="nomePessoaTrouxeMedicamento" id="nomeTrouxeMedicamento" placeholder="Nome de quem trouxe o medicamento" value="{{medicamento_estoque.nomePessoaTrouxeMedicamento}}" required>
+                    </div>
                 </div>
             
                 <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>

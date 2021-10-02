@@ -16,7 +16,10 @@ def novo_medicamento_estoque(medicamento_paciente_id):
             medicamento_paciente_id,
             dataVencimentoFormatada,
             request.form['quantidade'],
-            request.form['quantidade'])
+            request.form['quantidade'],
+            request.form['lote'],
+            request.form['nomePessoaTrouxeMedicamento'])
+
         db.session.add(medicamento_estoque)
         db.session.commit()
         return redirect(f"/medicamento_paciente/editar/{medicamento_paciente_id}")
@@ -36,6 +39,9 @@ def editar_medicamento_estoque(id):
 
         medicamento_estoque.quantidade = request.form['quantidade']
         medicamento_estoque.dataVencimento = dataVencimentoFormatada
+        medicamento_estoque.lote = request.form['lote']
+        medicamento_estoque.nomePessoaTrouxeMedicamento = request.form['nomePessoaTrouxeMedicamento']
+
         db.session.commit()
         return redirect(f"/medicamento_paciente/editar/{medicamento_paciente_id}")
 
