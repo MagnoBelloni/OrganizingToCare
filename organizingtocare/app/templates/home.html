@@ -2,54 +2,70 @@
 {% block content %}
 
 <div class="card mt-2">
+
   <!-- card header  -->
   <div class="card-header bg-white border-bottom-0 py-4">
     <h2 class="d-flex justify-content-center">Bem vindo</h2>
   </div>
+
   <!-- table  -->
+  <h3>Medicamentos perto do vencimento</h3>
   <div class="table-responsive">
-    <table class="table text-nowrap mb-0">
+    <table class="table text-nowrap mb-0 table-hover">
       <thead class="table-dark">
-          <tr>
-            <th>Nome</th>
-            <th>Data Vencimento</th>
-            <th>Visualizar</th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for paciente in pacientes %}
-          <tr>
-            <td class="align-middle"><div class="d-flex
-                align-items-center">
-                <div class="ms-3 lh-1">
-                  <h5 class="fw-bold mb-1">{{paciente.nome}}</h5>
-
-                </div>
-              </div></td>
-            <td class="align-middle">{{paciente.nomeResponsavel}}</td>
-            <td class="align-middle">{{paciente.telefoneResponsavel}}</td>
-            <td class="align-middle"><span class="badge
-                badge-warning">{{paciente.dataInternacao.strftime('%d/%m/%Y')}}</span></td>
-                <td><a href="/paciente/editar/{{paciente.id}}" class="btn btn-success">Editar</a></td>
-                <td><a href="/paciente/excluir/{{paciente.id}}" class="btn btn-danger">Excluir</a></td>
-          </tr>
-              </div>
-
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
+        <tr>
+          <th>Nome do Paciente</th>
+          <th>Nome do Medicamento</th>
+          <th>Data Vencimento</th>
+          <th>Vencido</th>
+          <th>Visualizar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for medicamento in medicamentos_para_vencer %}
+        <tr>
+          <td>{{medicamento.MedicamentoPaciente.Paciente.nome}}</td>
+          <td>{{medicamento.MedicamentoPaciente.Medicamento.nome}}</td>
+          {% if medicamento.vencido %}
+            <td style="color: red;">{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
+            <td>Sim</td>
+          {% endif %}
+          {% if not medicamento.vencido %}
+            <td>{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
+            <td>Não</td>
+          {% endif %}
+          <td><a href="/medicamento_estoque/editar/{{medicamento.id}}" class="btn btn-warning">Visualizar</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
     </table>
-  
-    <!-- card footer  -->
-    <div class="card-footer bg-white text-center">
-        <a href="#">Ver Todos os cadastros</a>
-
-            </div>
-
-        
   </div>
-  
-</div>
 
-{% endblock %}
+  <!-- table  -->
+  <h3 class="mt-5 ">Medicamentos com quantidade baixa</h3>
+  <div class="table-responsive pb-5">
+    <table class="table text-nowrap mb-0 table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Nome do Paciente</th>
+          <th>Nome do Medicamento</th>
+          <th>Quantidade Restante</th>
+          <th>Quantidade Receitada</th>
+          <th>Visualizar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for medicamento in medicamentos_baixo_estoque %}
+        <tr>
+          <td>{{medicamento.MedicamentoPaciente.Paciente.nome}}</td>
+          <td>{{medicamento.MedicamentoPaciente.Medicamento.nome}}</td>
+          <td>{{medicamento.quantidade}}</td>
+          <td>{{medicamento.MedicamentoPaciente.quantidadeEsperada}}</td>
+          <td><a href="/medicamento_estoque/editar/{{medicamento.id}}" class="btn btn-warning">Visualizar</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% endblock %}
