@@ -1,127 +1,130 @@
-
-
-
 {% extends "base.html" %}
 {% block content %}
 
 
 <div class="container  flex-column mt-2">
-    <a href="/paciente" class="btn btn-success mt-4 col-md-1">< Voltar</a>
-  <div class="card smooth-shadow-md mt-2 ">
-    <div class="card-body p-6">
-        <div class="mb-4">
-          <h2 class="d-flex justify-content-center">Editar Paciente</h2>
-          <hr>
-          <form action="/paciente/editar/{{paciente.id}}" method="post">
-              <div class="form-row">
-                  <div class="col-sm-12 col-lg-6 mt-2">
-                      <label>Nome do Paciente</label>
-                      <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo"
-                          value="{{paciente.nome}}" required>
-                  </div>
-                  <div class="col-sm-12 col-lg-6 mt-2">
-                      <label>Data de Nascimento</label>
-                      <input type="date" class="form-control" name="dataNascimento" id="dataNascimento" placeholder="dataNascimento"
-                          value="{{paciente.dataNascimento.strftime('%Y-%m-%d')}}" required>
-                  </div>
-                  <div class="col-sm-12 col-lg-6 mt-2">
-                      <label>Altura</label>
-                      <input type="number" step="0.01" class="form-control" name="altura" id="altura" placeholder="Altura"
-                          value="{{paciente.altura}}" required>
-                  </div>
-                  <div class="col-sm-12 col-lg-6 mt-2">
-                      <label>Peso</label>
-                      <input type="number" class="form-control" name="peso" id="peso" placeholder="Peso"
-                          value="{{paciente.peso}}" required>
-                  </div>
-                  <div class="col-sm-12 col-lg-6 mt-2">
-                      <label>Nome do Responsavel</label>
-                      <input type="text" class="form-control" name="nomeResponsavel" id="nomeResponsavel" placeholder="Nome do Responsavel"
-                          value="{{paciente.nomeResponsavel}}" required>
-                  </div>
-                  <div class="col-sm-12 col-lg-6 mt-2">
-                      <label>Telefone do Responsavel</label>
-                      <input type="text" class="form-control" name="telefoneResponsavel" id="telefoneResponsavel" placeholder="Nome do Responsavel"
-                          value="{{paciente.telefoneResponsavel}}" required>
-                  </div>
-                  <div class="col-sm-12 col-lg-6 mt-2">
-                      <label>Data de internação</label>
-                      {% if session['usuario_tipo'] == 'administrador' %}
-                      <input type="date" class="form-control" name="dataInternacao" id="dataInternacao"
-                          value="{{paciente.dataInternacao.strftime('%Y-%m-%d')}}" >
-                      {% else %}
-                      <input type="date" class="form-control" name="dataInternacao" id="dataInternacao"
-                          value="{{paciente.dataInternacao.strftime('%Y-%m-%d')}}" disabled>
-                      {% endif %}
-                      
-                  </div>
-                  <div class="col-sm-12 col-lg-6 mt-2">
-                      <label>Data de Criação</label>
-                      <input type="text" disabled class="form-control" name="dataCriacao" id="dataCriacao"
-                          value="{{paciente.dataCriacao.strftime('%d/%m/%Y %H:%M:%S')}}">
-                  </div>
-                  <div class="col-sm-12 col-lg-6 mt-2">
-                      <h4><b>Idade:</b> {{paciente.idade}} anos</h4>
-                  </div>
-                  <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
-          </form>
-  </div>
-</div>
-</div>
-</div>
-<div class="card smooth-shadow-md mt-2 ">
-    <div class="card-body p-6">
+    <a href="/paciente" class="btn btn-primary mt-4" type="submit">
+        <i class="material-icons">arrow_back</i>
+        Voltar
+    </a>
+    <div class="card smooth-shadow-md mt-2 ">
+        <div class="card-body p-6">
             <div class="mb-4">
-                <div class="col-sm-12 mt-5">
-                    <h2 class="d-flex justify-content-center">Medicamentos</h2>
-                    <hr>
-                    <a class="btn btn-primary text-white col-sm-12 col-md-2" href="/medicamento_paciente/novo/{{paciente.id}}">Novo medicamento</a>
-                </div>
-                
-                <div class="table-responsive">
-                    <table class="table text-nowrap  mt-4 mb-0">
-                      <thead class="table-dark">
-                            <tr>
-                                <th>Nome do medicamento</th>
-                                <th>Quantidade Receitada</th>
-                                <th>Psicotropico</th>
-                                <th>Editar</th>
-                                <th>Excluir</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-light">
-                            {% for medicamento in paciente.medicamento_paciente_association %}
-                            <tr {% if medicamento.Medicamento.psicotropico %} class="psicotropico" {% endif %}>
-                                <td class="align-middle"><div class="d-flex
-                                    align-items-center">
-                                    <div class="ms-3 lh-1">
-                                      <h5 class="fw-bold mb-1">{{medicamento.Medicamento.nome}}</h5>
-                
-                                    </div>
-                                  </div></td>
-                                <td class="align-middle">{{medicamento.quantidadeEsperada}}{{medicamento.unidadeDeMedida}}</td>
-                                {% if medicamento.Medicamento.psicotropico %}
-                                    <td class="align-middle">Sim</td>
-                                {% else %}
-                                    <td class="align-middle">Não</td>
-                                {% endif %}
-                                <td class="align-middle"><a href="/medicamento_paciente/editar/{{medicamento.id}}" class="btn btn-success">Editar</a></td>
-                                <td class="align-middle"><a href="/medicamento_paciente/excluir/{{medicamento.id}}" class="btn btn-danger">Excluir</a></td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table> 
-                </div>
+                <h2 class="d-flex justify-content-center">Editar Paciente</h2>
+                <hr>
+                <form action="/paciente/editar/{{paciente.id}}" method="post">
+                    <div class="form-row">
+                        <div class="col-sm-12 col-lg-6 mt-2">
+                            <label>Nome do Paciente</label>
+                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo"
+                                value="{{paciente.nome}}" required>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mt-2">
+                            <label>Data de Nascimento</label>
+                            <input type="date" class="form-control" name="dataNascimento" id="dataNascimento"
+                                placeholder="dataNascimento" value="{{paciente.dataNascimento.strftime('%Y-%m-%d')}}"
+                                required>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mt-2">
+                            <label>Altura</label>
+                            <input type="number" step="0.01" class="form-control" name="altura" id="altura"
+                                placeholder="Altura" value="{{paciente.altura}}" required>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mt-2">
+                            <label>Peso</label>
+                            <input type="number" class="form-control" name="peso" id="peso" placeholder="Peso"
+                                value="{{paciente.peso}}" required>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mt-2">
+                            <label>Nome do Responsavel</label>
+                            <input type="text" class="form-control" name="nomeResponsavel" id="nomeResponsavel"
+                                placeholder="Nome do Responsavel" value="{{paciente.nomeResponsavel}}" required>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mt-2">
+                            <label>Telefone do Responsavel</label>
+                            <input type="text" class="form-control" name="telefoneResponsavel" id="telefoneResponsavel"
+                                placeholder="Nome do Responsavel" value="{{paciente.telefoneResponsavel}}" required>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mt-2">
+                            <label>Data de internação</label>
+                            {% if session['usuario_tipo'] == 'administrador' %}
+                            <input type="date" class="form-control" name="dataInternacao" id="dataInternacao"
+                                value="{{paciente.dataInternacao.strftime('%Y-%m-%d')}}">
+                            {% else %}
+                            <input type="date" class="form-control" name="dataInternacao" id="dataInternacao"
+                                value="{{paciente.dataInternacao.strftime('%Y-%m-%d')}}" disabled>
+                            {% endif %}
+
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mt-2">
+                            <label>Data de Criação</label>
+                            <input type="text" disabled class="form-control" name="dataCriacao" id="dataCriacao"
+                                value="{{paciente.dataCriacao.strftime('%d/%m/%Y %H:%M:%S')}}">
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mt-2">
+                            <h4><b>Idade:</b> {{paciente.idade}} anos</h4>
+                        </div>
+                        <button class="btn btn-success mt-4 col-md-2" type="submit">Salvar</button>
+                </form>
             </div>
         </div>
     </div>
-    <hr>
+</div>
+<div class="card smooth-shadow-md mt-2 ">
+    <div class="card-body p-6">
+        <div class="mb-4">
+            <div class="col-sm-12 mt-5">
+                <h2 class="d-flex justify-content-center">Medicamentos</h2>
+                <hr>
+                <a class="btn btn-info text-white col-sm-12 col-md-2"
+                    href="/medicamento_paciente/novo/{{paciente.id}}">Novo medicamento</a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table text-nowrap  mt-4 mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nome do medicamento</th>
+                            <th>Quantidade Receitada</th>
+                            <th>Psicotropico</th>
+                            <th>Editar</th>
+                            <th>Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-light">
+                        {% for medicamento in paciente.medicamento_paciente_association %}
+                        <tr {% if medicamento.Medicamento.psicotropico %} class="psicotropico" {% endif %}>
+                            <td class="align-middle">
+                                <div class="d-flex
+                                    align-items-center">
+                                    <div class="ms-3 lh-1">
+                                        <h5 class="fw-bold mb-1">{{medicamento.Medicamento.nome}}</h5>
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle">{{medicamento.quantidadeEsperada}}{{medicamento.unidadeDeMedida}}
+                            </td>
+                            {% if medicamento.Medicamento.psicotropico %}
+                            <td class="align-middle">Sim</td>
+                            {% else %}
+                            <td class="align-middle">Não</td>
+                            {% endif %}
+                            <td class="align-middle"><a href="/medicamento_paciente/editar/{{medicamento.id}}"
+                                    class="btn btn-success">Editar</a></td>
+                            <td class="align-middle"><a href="/medicamento_paciente/excluir/{{medicamento.id}}"
+                                    class="btn btn-danger">Excluir</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
 
 
 
 
 {% endblock %}
-  
-
-      
-          
