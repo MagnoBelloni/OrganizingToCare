@@ -11,38 +11,38 @@
   <!-- table  -->
   <h2>Medicamentos perto do vencimento</h2>
   <div class="table-responsive">
-    <table class="table table-hover">
-      <thead class="table-dark">
-        <tr>
-          <th>Nome do Paciente</th>
-          <th>Nome do Medicamento</th>
-          <th>Data Vencimento</th>
-          <th>Vencido</th>
-          <th>Visualizar</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for medicamento in medicamentos_para_vencer %}
-        <tr>
-          <td>{{medicamento.MedicamentoPaciente.Paciente.nome}}</td>
-          <td>{{medicamento.MedicamentoPaciente.Medicamento.nome}}</td>
-          {% if medicamento.vencido %}
-            <td style="color: red;">{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
-            <td>Sim</td>
-          {% endif %}
-          {% if not medicamento.vencido %}
-            <td>{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
-            <td>Não</td>
-          {% endif %}
-          <td><a href="/medicamento_estoque/editar/{{medicamento.id}}" class="btn btn-warning">Visualizar</a></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+      <table class="table table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Nome do Paciente</th>
+            <th>Nome do Medicamento</th>
+            <th>Data Vencimento</th>
+            <th>Vencido</th>
+            <th>Visualizar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for medicamento in medicamentos_para_vencer %}
+          <tr>
+            <td>{{medicamento.MedicamentoPaciente.Paciente.nome}}</td>
+            <td>{{medicamento.MedicamentoPaciente.Medicamento.nome}}</td>
+            {% if medicamento.vencido %}
+              <td style="color: red;">{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
+              <td>Sim</td>
+            {% endif %}
+            {% if not medicamento.vencido %}
+              <td>{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
+              <td>Não</td>
+            {% endif %}
+            <td><a href="/medicamento_estoque/editar/{{medicamento.id}}" class="btn btn-warning">Visualizar</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
   </div>
 
   <!-- table  -->
-  <h2 class="mt-5 ">Medicamentos com quantidade baixa</h2>
+  <h2 class="mt-5">Medicamentos com quantidade baixa</h2>
   <div class="table-responsive">
     <table class="table text-nowrap table-hover">
       <thead class="table-dark">

@@ -68,12 +68,11 @@
         <!--End Sidebar-->
 
         <div class="main-panel">
+
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
-                    <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="javascript:;"></a>
-                    </div>
+                    <div class="navbar-wrapper"></div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -82,7 +81,7 @@
                         <span class="navbar-toggler-icon icon-bar"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end">
-                        <form class="navbar-form"></form>
+                        <!-- <form class="navbar-form"></form> -->
                     </div>
                 </div>
             </nav>
@@ -96,11 +95,22 @@
             <!--End Content-->
         </div>
     </div>
+
     <script src="{{url_for('static', filename='js/core/jquery.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/core/popper.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/core/bootstrap-material-design.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/material-dashboard.js')}}"></script>
+    <script>
+        //javascript for activating the Perfect Scrollbar
+        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+        //javascript for detroying the Perfect Scrollbar
+        $('.main-panel').perfectScrollbar('destroy');
+
+        //javascript for updating the Perfect Scrollbar when the content of the page is changing
+        $('.main-panel').perfectScrollbar('update');
+    </script>
 </body>
 
 </html>
