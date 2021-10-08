@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-sm-12 col-lg-6 mt-2">
                         <label>Unidade de Medida do Medicamento</label>
-                        <select id="inputState" class="form-control" name="unidadeMedida">
+                        <select id="inputState" class="custom-select" name="unidadeMedida">
                         {% for unidade in unidadesMedida %}
                             <option value="{{unidadesMedida[unidade]}}">{{unidade}} - {{unidadesMedida[unidade]}}</option>
                         {% endfor %}

@@ -17,7 +17,6 @@
             <th>Nome do Paciente</th>
             <th>Nome do Medicamento</th>
             <th>Data Vencimento</th>
-            <th>Vencido</th>
             <th>Visualizar</th>
           </tr>
         </thead>
@@ -26,14 +25,7 @@
           <tr>
             <td>{{medicamento.MedicamentoPaciente.Paciente.nome}}</td>
             <td>{{medicamento.MedicamentoPaciente.Medicamento.nome}}</td>
-            {% if medicamento.vencido %}
-              <td style="color: red;">{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
-              <td>Sim</td>
-            {% endif %}
-            {% if not medicamento.vencido %}
-              <td>{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
-              <td>Não</td>
-            {% endif %}
+            <td>{{medicamento.dataVencimento.strftime('%d/%m/%Y')}}</td>
             <td><a href="/medicamento_estoque/editar/{{medicamento.id}}" class="btn btn-warning">Visualizar</a></td>
           </tr>
           {% endfor %}
@@ -60,7 +52,7 @@
           <td>{{medicamento.MedicamentoPaciente.Paciente.nome}}</td>
           <td>{{medicamento.MedicamentoPaciente.Medicamento.nome}}</td>
           <td>{{medicamento.quantidade}}</td>
-          <td>{{medicamento.MedicamentoPaciente.quantidadeEsperada}}</td>
+          <td>{{medicamento.MedicamentoPaciente.quantidadeEsperada}}{{medicamento.MedicamentoPaciente.unidadeDeMedida}}</td>
           <td><a href="/medicamento_estoque/editar/{{medicamento.id}}" class="btn btn-warning">Visualizar</a></td>
         </tr>
         {% endfor %}

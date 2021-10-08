@@ -16,7 +16,4 @@ def home():
         MedicamentoEstoque.quantidadeInicial / 3 >= MedicamentoEstoque.quantidade
     ).order_by(MedicamentoEstoque.quantidade.asc()).all()
 
-    for medicamento in medicamentos_para_vencer:
-        medicamento.vencido = medicamento.dataVencimento < datetime.today()
-
     return render_template("home.html", medicamentos_para_vencer=medicamentos_para_vencer, medicamentos_baixo_estoque=medicamentos_baixo_estoque)
