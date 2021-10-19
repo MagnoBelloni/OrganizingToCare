@@ -1,63 +1,66 @@
 {% extends "base.html" %}
 {% block content %}
 
-     <!-- card  -->
-     <div class="card mt-2">
-        <!-- card header  -->
-        <div class="card-header bg-white border-bottom-0 py-4">
-            <h2 class="d-flex justify-content-center">Usuários</h2>
-          <a class="btn btn-success text-white mt-2" href="/usuario/novo">Novo</a>
-        </div>
-    <div class="table-responsive">
-        <table class="table text-nowrap mb-0">
-          <thead class="table-dark">
-                <tr>
-                    <th>Nome</th>
-                    <th>Tipo</th>
-                    <th>Login</th>
-                    {% if session['usuario_tipo'] == 'administrador' %}
-                    <th>Editar</th>
-                    <th>Excluir</th>
-                    {% endif %}
-                </tr>
-            </thead>
-        
-    
-              <tbody class="table-light">
-                {% for usuario in usuarios %}
-                <tr>
-                    <td class="align-middle"><div class="d-flex
+<!-- card  -->
+<div class="card mt-2">
+  <!-- card header  -->
+  <div class="card-header bg-white border-bottom-0 py-4">
+    <h2 class="d-flex justify-content-center">Usuários</h2>
+    <a class="btn btn-info mt-2" href="/usuario/novo">
+      <i class="material-icons">add</i>
+      Novo
+    </a>
+  </div>
+  <div class="table-responsive">
+    <table class="table text-nowrap mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th>Login</th>
+          {% if session['usuario_tipo'] == 'administrador' %}
+          <th>Editar</th>
+          <th>Excluir</th>
+          {% endif %}
+        </tr>
+      </thead>
+      <tbody class="table-light">
+        {% for usuario in usuarios %}
+        <tr>
+          <td class="align-middle">
+            <div class="d-flex
                         align-items-center">
-                        <div class="ms-3 lh-1">
-                          <h5 class="fw-bold mb-1">{{usuario.nomeCompleto}}</h5>
-        
-                        </div>
-                      </div></td>
-                    <td class="align-middle">{{usuario.tipo}}</td>
-                    <td class="align-middle">{{usuario.login}}</td>
-                    {% if session['usuario_tipo'] == 'administrador' %}
-                    <td><a href="/usuario/editar/{{usuario.id}}" class="btn btn-success">Editar</a></td>
-                    <td><a href="/usuario/excluir/{{usuario.id}}" class="btn btn-danger">Excluir</a></td>
-                    {% endif %}
-                </tr>
-                {% endfor %}
-            
-              </tbody>
-            </table>
-          </div>
-        </div>
-    
+              <div class="ms-3 lh-1">
+                <h5 class="fw-bold mb-1">{{usuario.nomeCompleto}}</h5>
+
+              </div>
             </div>
-        
-    </div>
-            
-    
+          </td>
+          <td class="align-middle">{{usuario.tipo}}</td>
+          <td class="align-middle">{{usuario.login}}</td>
+          {% if session['usuario_tipo'] == 'administrador' %}
+          <td><a href="/usuario/editar/{{usuario.id}}" class="btn btn-success">Editar</a></td>
+          <td><a href="/usuario/excluir/{{usuario.id}}" class="btn btn-danger">Excluir</a></td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+
 </div>
 
 
 
 
-        
+
 
 
 {% endblock %}

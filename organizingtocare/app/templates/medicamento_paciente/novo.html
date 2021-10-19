@@ -2,7 +2,10 @@
 {% block content %}
 
 <div class="container  flex-column mt-2">
-    <a href="/paciente/editar/{{paciente_id}}" class="btn btn-success mt-4 col-md-1"> < Voltar</a>
+    <a href="/paciente/editar/{{paciente_id}}" class="btn btn-primary mt-4">
+        <i class="material-icons">arrow_back</i>
+        Voltar
+    </a>
     <div class="card smooth-shadow-md mt-2 ">
         <div class="card-body p-6">
             <h2 class="d-flex justify-content-center">Novo Medicamento</h2>
@@ -28,7 +31,7 @@
                     </div>
                     <div class="col-sm-12 col-lg-6 mt-2">
                         <label>Unidade de Medida do Medicamento</label>
-                        <select id="inputState" class="form-control" name="unidadeMedida">
+                        <select id="inputState" class="custom-select" name="unidadeMedida">
                         {% for unidade in unidadesMedida %}
                             <option value="{{unidadesMedida[unidade]}}">{{unidade}} - {{unidadesMedida[unidade]}}</option>
                         {% endfor %}
