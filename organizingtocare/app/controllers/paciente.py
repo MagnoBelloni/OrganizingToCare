@@ -69,6 +69,9 @@ def excluir_paciente(id):
 
 @app.route("/paciente/buscar", methods=["GET"])
 def buscar_paciente():
-    nome = request.form['nome']
-    paciente = Paciente.query.filter((Paciente.nome == nome)).first()
-    return render_template("paciente/index.html", paciente=paciente)
+    nome = request.args['nome']
+    
+    search = "%{}%".format(nome)
+    pacientes = Paciente.query.filter(Paciente.nome.like(search)).all()
+
+    return render_template("paciente/index.html", pacientes=pacientes)
