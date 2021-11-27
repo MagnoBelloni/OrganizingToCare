@@ -66,3 +66,9 @@ def excluir_paciente(id):
     db.session.delete(medicamento)
     db.session.commit()
     return redirect(url_for("index_pacientes"))
+
+@app.route("/paciente/buscar", methods=["GET"])
+def buscar_paciente():
+    nome = request.form['nome']
+    paciente = Paciente.query.filter((Paciente.nome == nome)).first()
+    return render_template("paciente/index.html", paciente=paciente)
