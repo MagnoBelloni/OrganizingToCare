@@ -72,6 +72,6 @@ def buscar_paciente():
     nome = request.args['nome']
     
     search = "%{}%".format(nome)
-    pacientes = Paciente.query.filter(Paciente.nome.like(search)).all()
+    pacientes = Paciente.query.filter(Paciente.nome.ilike(search)).all()
 
     return render_template("paciente/index.html", pacientes=pacientes)

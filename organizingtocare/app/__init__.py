@@ -5,12 +5,12 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 with open('./credentials/AppConfig.json') as jsonFile:
-    data = json.load(jsonFile)
+    dataFromJson = json.load(jsonFile)
     
-host = data["host"]
-port = data["port"]
-user = data["user"]
-password = data["password"]
+host = dataFromJson["host"]
+port = dataFromJson["port"]
+user = dataFromJson["user"]
+password = dataFromJson["password"]
 
 app = Flask(__name__) 
 app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{user}:{password}@{host}:{port}/postgres"

@@ -10,7 +10,7 @@ class MedicamentoEstoque(db.Model):
     lote = db.Column(db.String, nullable=False)
     nomePessoaTrouxeMedicamento = db.Column(db.String, nullable=False)
 
-    medicamento_estoque_registro_association = db.relationship('MedicamentoEstoqueRegistro', order_by='MedicamentoEstoqueRegistro.dataRegistro.desc()')
+    medicamento_estoque_registro_association = db.relationship('MedicamentoEstoqueRegistro', viewonly=True,order_by='MedicamentoEstoqueRegistro.dataRegistro.desc()')
 
     def __init__(self, medicamentoPacienteId, dataVencimento, quantidade, quantidadeInicial, lote, nomePessoaTrouxeMedicamento):
         self.medicamentoPacienteId = medicamentoPacienteId

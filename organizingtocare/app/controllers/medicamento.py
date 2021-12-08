@@ -55,6 +55,6 @@ def buscar_medicamento():
     medicamento = request.args['nome']
     
     search = "%{}%".format(medicamento)
-    medicamentos = Medicamento.query.filter(Medicamento.nome.like(search)).all()
+    medicamentos = Medicamento.query.filter(Medicamento.nome.ilike(search)).all()
 
     return render_template("medicamento/index.html", medicamentos=medicamentos)
