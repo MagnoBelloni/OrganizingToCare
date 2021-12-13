@@ -51,7 +51,7 @@
         <tr>
           <td>{{medicamento.MedicamentoPaciente.Paciente.nome}}</td>
           <td>{{medicamento.MedicamentoPaciente.Medicamento.nome}}</td>
-          <td>{{medicamento.quantidade}}</td>
+          <td>{{medicamento.quantidade}}{{medicamento.MedicamentoPaciente.unidadeDeMedida}}</td>
           <td>{{medicamento.MedicamentoPaciente.quantidadeEsperada}}{{medicamento.MedicamentoPaciente.unidadeDeMedida}}</td>
           <td><a href="/medicamento_estoque/editar/{{medicamento.id}}" class="btn btn-warning">Visualizar</a></td>
         </tr>
