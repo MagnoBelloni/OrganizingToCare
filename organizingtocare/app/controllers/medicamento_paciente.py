@@ -44,7 +44,7 @@ def editar_medicamento_paciente(id):
     if request.method == 'POST':
         medicamento_paciente.quantidade = request.form['quantidade']
         medicamento_paciente.medicamentoId = request.form['medicamentoId']
-        medicamento_paciente.unidadeDeMedida = request.form['unidadeDeMedida']
+        medicamento_paciente.unidadeDeMedida = request.form['unidadeMedida']
 
         db.session.commit()
         return redirect(f"/paciente/editar/{medicamento_paciente.pacienteId}")
